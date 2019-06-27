@@ -1,0 +1,30 @@
+C:\Users\USUARIO\Desktop\Nueva carpeta\Prision_WCF\WCF_Prision\bin\Debug\WCF_Prision.dll.config
+C:\Users\USUARIO\Desktop\Nueva carpeta\Prision_WCF\WCF_Prision\bin\Debug\WCF_Prision.dll
+C:\Users\USUARIO\Desktop\Nueva carpeta\Prision_WCF\WCF_Prision\bin\Debug\WCF_Prision.pdb
+C:\Users\USUARIO\Desktop\Nueva carpeta\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\Desktop\Nueva carpeta\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\Desktop\Nueva carpeta\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\Desktop\Nueva carpeta\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\Desktop\Nueva carpeta\Prision_WCF\WCF_Prision\obj\Debug\WCF_Prision.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO\Desktop\Nueva carpeta\Prision_WCF\WCF_Prision\obj\Debug\WCF_Prision.dll
+C:\Users\USUARIO\Desktop\Nueva carpeta\Prision_WCF\WCF_Prision\obj\Debug\WCF_Prision.pdb
+C:\Users\USUARIO\Desktop\Prision_WCF\Prision_WCF\WCF_Prision\obj\Debug\WCF_Prision.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO\Desktop\Prision_WCF\Prision_WCF\WCF_Prision\obj\Debug\WCF_Prision.dll
+C:\Users\USUARIO\Desktop\Prision_WCF\Prision_WCF\WCF_Prision\obj\Debug\WCF_Prision.pdb
+C:\Users\USUARIO\Desktop\Prision_WCF\Prision_WCF\WCF_Prision\bin\Debug\WCF_Prision.dll.config
+C:\Users\USUARIO\Desktop\Prision_WCF\Prision_WCF\WCF_Prision\bin\Debug\WCF_Prision.dll
+C:\Users\USUARIO\Desktop\Prision_WCF\Prision_WCF\WCF_Prision\bin\Debug\WCF_Prision.pdb
+C:\Users\USUARIO\Desktop\Prision_WCF\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\Desktop\Prision_WCF\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\Desktop\Prision_WCF\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\Desktop\Prision_WCF\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.SqlServer.xml
+E:\TrabajoProgweb2\Prision_WCF\WCF_Prision\bin\Debug\WCF_Prision.dll.config
+E:\TrabajoProgweb2\Prision_WCF\WCF_Prision\bin\Debug\WCF_Prision.dll
+E:\TrabajoProgweb2\Prision_WCF\WCF_Prision\bin\Debug\WCF_Prision.pdb
+E:\TrabajoProgweb2\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.dll
+E:\TrabajoProgweb2\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.SqlServer.dll
+E:\TrabajoProgweb2\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.xml
+E:\TrabajoProgweb2\Prision_WCF\WCF_Prision\bin\Debug\EntityFramework.SqlServer.xml
+E:\TrabajoProgweb2\Prision_WCF\WCF_Prision\obj\Debug\WCF_Prision.csprojResolveAssemblyReference.cache
+E:\TrabajoProgweb2\Prision_WCF\WCF_Prision\obj\Debug\WCF_Prision.dll
+E:\TrabajoProgweb2\Prision_WCF\WCF_Prision\obj\Debug\WCF_Prision.pdb

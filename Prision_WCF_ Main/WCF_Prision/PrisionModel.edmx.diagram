@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0bed462992954db1aca0fc60687d9a70" Name="Diagram1">
+        <EntityTypeShape EntityType="PrisionModel.tb_celda" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.tb_delito" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.tb_detalle_ingreso" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.tb_distrito" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.tb_ingreso" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.tb_inscripcion" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.tb_pabellon" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.tb_preso" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.tb_programa" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.tb_visita" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.tb_visitante" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.vwDelitosIngreso" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.vwIngresosPreso" Width="1.5" PointX="9.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.vwProgramasIngreso" Width="1.5" PointX="9.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrisionModel.vwVisitasIngreso" Width="1.5" PointX="11.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="PrisionModel.FK__tb_celda__cod_pa__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="PrisionModel.FK__tb_ingres__cod_c__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="PrisionModel.FK__tb_detall__cod_d__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="PrisionModel.FK__tb_detall__cod_i__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="PrisionModel.FK__tb_preso__dis_pr__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="PrisionModel.FK__tb_visita__dis_v__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="PrisionModel.FK__tb_ingres__cod_p__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="PrisionModel.FK__tb_inscri__cod_i__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="PrisionModel.FK__tb_visita__cod_i__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="PrisionModel.FK__tb_inscri__cod_p__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="PrisionModel.FK__tb_visita__cod_v__29572725" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

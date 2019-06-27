@@ -1,0 +1,19 @@
+<publishData>
+  <publishTarget publishUrl="http://localhost/WCFPrision">
+    <file relUrl="Web.config" publishTime="11/17/2018 19:20:16" />
+    <file relUrl="bin/EntityFramework.dll" publishTime="11/03/2015 17:43:42" />
+    <file relUrl="WCF_Prision.ServicioVisita.svc" publishTime="11/28/2018 17:10:49" />
+    <file relUrl="WCF_Prision.ServicioDelitos.svc" publishTime="11/28/2018 17:10:49" />
+    <file relUrl="PrisionModel.Context.tt" publishTime="11/13/2018 13:30:32" />
+    <file relUrl="PrisionModel.tt" publishTime="11/13/2018 13:30:48" />
+    <file relUrl="bin/WCF_Prision.dll" publishTime="11/28/2018 17:07:33" />
+    <file relUrl="bin/EntityFramework.SqlServer.dll" publishTime="11/03/2015 17:43:42" />
+    <file relUrl="WCF_Prision.ServicioIngreso.svc" publishTime="11/28/2018 17:10:49" />
+    <file relUrl="bin/EntityFramework.SqlServer.xml" publishTime="11/03/2015 17:43:42" />
+    <file relUrl="WCF_Prision.ServicioPreso.svc" publishTime="11/28/2018 17:10:49" />
+    <file relUrl="WCF_Prision.ServicioInscripcion.svc" publishTime="11/28/2018 17:10:49" />
+    <file relUrl="bin/EntityFramework.xml" publishTime="11/03/2015 17:43:42" />
+    <file relUrl="bin/WCF_Prision.dll.config" publishTime="11/17/2018 19:20:16" />
+    <file relUrl="bin/WCF_Prision.pdb" publishTime="11/28/2018 17:07:33" />
+  </publishTarget>
+</publishData>

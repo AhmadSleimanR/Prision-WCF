@@ -1,0 +1,1643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PrisionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_celda">
+          <Key>
+            <PropertyRef Name="cod_celda" />
+          </Key>
+          <Property Name="cod_celda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="capacidad_celda" Type="int" Nullable="false" />
+          <Property Name="actual_celda" Type="int" Nullable="false" />
+          <Property Name="cod_pabellon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_delito">
+          <Key>
+            <PropertyRef Name="cod_delito" />
+          </Key>
+          <Property Name="cod_delito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="des_delito" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="penaMax_delito" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_detalle_ingreso">
+          <Key>
+            <PropertyRef Name="cod_ingreso" />
+            <PropertyRef Name="cod_delito" />
+          </Key>
+          <Property Name="cod_ingreso" Type="int" Nullable="false" />
+          <Property Name="cod_delito" Type="int" Nullable="false" />
+          <Property Name="participacion" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_distrito">
+          <Key>
+            <PropertyRef Name="cod_distrito" />
+          </Key>
+          <Property Name="cod_distrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_distrito" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_ingreso">
+          <Key>
+            <PropertyRef Name="cod_ingreso" />
+          </Key>
+          <Property Name="cod_ingreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cod_preso" Type="int" Nullable="false" />
+          <Property Name="cod_celda" Type="int" Nullable="false" />
+          <Property Name="fec_ingreso" Type="date" Nullable="false" />
+          <Property Name="fec_salida" Type="date" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="8" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_inscripcion">
+          <Key>
+            <PropertyRef Name="cod_inscripcion" />
+          </Key>
+          <Property Name="cod_inscripcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cod_ingreso" Type="int" Nullable="false" />
+          <Property Name="cod_programa" Type="int" Nullable="false" />
+          <Property Name="fecha_ini" Type="date" Nullable="false" />
+          <Property Name="fecha_fin" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_pabellon">
+          <Key>
+            <PropertyRef Name="cod_pabellon" />
+          </Key>
+          <Property Name="cod_pabellon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_pabellon" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_preso">
+          <Key>
+            <PropertyRef Name="cod_preso" />
+          </Key>
+          <Property Name="cod_preso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_preso" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ape_preso" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dni_preso" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="fecNac_preso" Type="date" Nullable="false" />
+          <Property Name="dis_preso" Type="int" Nullable="false" />
+          <Property Name="dir_preso" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_programa">
+          <Key>
+            <PropertyRef Name="cod_programa" />
+          </Key>
+          <Property Name="cod_programa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_programa" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="des_programa" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_visita">
+          <Key>
+            <PropertyRef Name="cod_visita" />
+          </Key>
+          <Property Name="cod_visita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cod_ingreso" Type="int" Nullable="false" />
+          <Property Name="cod_visitante" Type="int" Nullable="false" />
+          <Property Name="fec_visita" Type="date" Nullable="false" />
+          <Property Name="motivo_visita" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_visitante">
+          <Key>
+            <PropertyRef Name="cod_visitante" />
+          </Key>
+          <Property Name="cod_visitante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_visitante" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ape_visitante" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dni_visitante" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="dis_visitante" Type="int" Nullable="false" />
+          <Property Name="dir_visitante" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Prision.dbo.vwDelitosIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwDelitosIngreso">
+          <Key>
+            <PropertyRef Name="nom_preso" />
+            <PropertyRef Name="dni_preso" />
+            <PropertyRef Name="cod_ingreso" />
+            <PropertyRef Name="fec_ingreso" />
+            <PropertyRef Name="participacion" />
+            <PropertyRef Name="des_delito" />
+            <PropertyRef Name="cod_delito" />
+            <PropertyRef Name="penaMax_delito" />
+          </Key>
+          <Property Name="nom_preso" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dni_preso" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="cod_ingreso" Type="int" Nullable="false" />
+          <Property Name="fec_ingreso" Type="date" Nullable="false" />
+          <Property Name="participacion" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="des_delito" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cod_delito" Type="int" Nullable="false" />
+          <Property Name="penaMax_delito" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Prision.dbo.vwIngresosPreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwIngresosPreso">
+          <Key>
+            <PropertyRef Name="cod_ingreso" />
+            <PropertyRef Name="fec_ingreso" />
+            <PropertyRef Name="fec_salida" />
+            <PropertyRef Name="cod_celda" />
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="cod_preso" />
+            <PropertyRef Name="dni_preso" />
+            <PropertyRef Name="nom_preso" />
+            <PropertyRef Name="ape_preso" />
+            <PropertyRef Name="dir_preso" />
+            <PropertyRef Name="fecNac_preso" />
+            <PropertyRef Name="nom_distrito" />
+          </Key>
+          <Property Name="cod_ingreso" Type="int" Nullable="false" />
+          <Property Name="fec_ingreso" Type="date" Nullable="false" />
+          <Property Name="fec_salida" Type="date" Nullable="false" />
+          <Property Name="cod_celda" Type="int" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="cod_preso" Type="int" Nullable="false" />
+          <Property Name="dni_preso" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="nom_preso" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ape_preso" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dir_preso" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecNac_preso" Type="date" Nullable="false" />
+          <Property Name="nom_distrito" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Prision.dbo.vwProgramasIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwProgramasIngreso">
+          <Key>
+            <PropertyRef Name="nom_distrito" />
+            <PropertyRef Name="nom_preso" />
+            <PropertyRef Name="ape_preso" />
+            <PropertyRef Name="dni_preso" />
+            <PropertyRef Name="fecNac_preso" />
+            <PropertyRef Name="dir_preso" />
+            <PropertyRef Name="cod_ingreso" />
+            <PropertyRef Name="cod_celda" />
+            <PropertyRef Name="fec_ingreso" />
+            <PropertyRef Name="fec_salida" />
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="fecha_ini" />
+            <PropertyRef Name="fecha_fin" />
+            <PropertyRef Name="nom_programa" />
+            <PropertyRef Name="des_programa" />
+          </Key>
+          <Property Name="nom_distrito" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="nom_preso" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ape_preso" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dni_preso" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="fecNac_preso" Type="date" Nullable="false" />
+          <Property Name="dir_preso" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cod_ingreso" Type="int" Nullable="false" />
+          <Property Name="cod_celda" Type="int" Nullable="false" />
+          <Property Name="fec_ingreso" Type="date" Nullable="false" />
+          <Property Name="fec_salida" Type="date" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="fecha_ini" Type="date" Nullable="false" />
+          <Property Name="fecha_fin" Type="date" Nullable="false" />
+          <Property Name="nom_programa" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="des_programa" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Prision.dbo.vwVisitasIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwVisitasIngreso">
+          <Key>
+            <PropertyRef Name="nom_distrito" />
+            <PropertyRef Name="nom_preso" />
+            <PropertyRef Name="ape_preso" />
+            <PropertyRef Name="dni_preso" />
+            <PropertyRef Name="cod_ingreso" />
+            <PropertyRef Name="fec_visita" />
+            <PropertyRef Name="motivo_visita" />
+            <PropertyRef Name="nom_visitante" />
+            <PropertyRef Name="dni_visitante" />
+            <PropertyRef Name="ape_visitante" />
+            <PropertyRef Name="dis_visitante" />
+            <PropertyRef Name="dir_visitante" />
+          </Key>
+          <Property Name="nom_distrito" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="nom_preso" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ape_preso" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dni_preso" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="cod_ingreso" Type="int" Nullable="false" />
+          <Property Name="fec_visita" Type="date" Nullable="false" />
+          <Property Name="motivo_visita" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="nom_visitante" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dni_visitante" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="ape_visitante" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dis_visitante" Type="int" Nullable="false" />
+          <Property Name="dir_visitante" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tb_celda__cod_pa__1FCDBCEB">
+          <End Role="tb_pabellon" Type="Self.tb_pabellon" Multiplicity="1" />
+          <End Role="tb_celda" Type="Self.tb_celda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_pabellon">
+              <PropertyRef Name="cod_pabellon" />
+            </Principal>
+            <Dependent Role="tb_celda">
+              <PropertyRef Name="cod_pabellon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_detall__cod_d__2D27B809">
+          <End Role="tb_delito" Type="Self.tb_delito" Multiplicity="1" />
+          <End Role="tb_detalle_ingreso" Type="Self.tb_detalle_ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_delito">
+              <PropertyRef Name="cod_delito" />
+            </Principal>
+            <Dependent Role="tb_detalle_ingreso">
+              <PropertyRef Name="cod_delito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_detall__cod_i__2C3393D0">
+          <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="1" />
+          <End Role="tb_detalle_ingreso" Type="Self.tb_detalle_ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ingreso">
+              <PropertyRef Name="cod_ingreso" />
+            </Principal>
+            <Dependent Role="tb_detalle_ingreso">
+              <PropertyRef Name="cod_ingreso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_ingres__cod_c__24927208">
+          <End Role="tb_celda" Type="Self.tb_celda" Multiplicity="1" />
+          <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_celda">
+              <PropertyRef Name="cod_celda" />
+            </Principal>
+            <Dependent Role="tb_ingreso">
+              <PropertyRef Name="cod_celda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_ingres__cod_p__239E4DCF">
+          <End Role="tb_preso" Type="Self.tb_preso" Multiplicity="1" />
+          <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_preso">
+              <PropertyRef Name="cod_preso" />
+            </Principal>
+            <Dependent Role="tb_ingreso">
+              <PropertyRef Name="cod_preso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_inscri__cod_i__31EC6D26">
+          <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="1" />
+          <End Role="tb_inscripcion" Type="Self.tb_inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ingreso">
+              <PropertyRef Name="cod_ingreso" />
+            </Principal>
+            <Dependent Role="tb_inscripcion">
+              <PropertyRef Name="cod_ingreso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_inscri__cod_p__32E0915F">
+          <End Role="tb_programa" Type="Self.tb_programa" Multiplicity="1" />
+          <End Role="tb_inscripcion" Type="Self.tb_inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_programa">
+              <PropertyRef Name="cod_programa" />
+            </Principal>
+            <Dependent Role="tb_inscripcion">
+              <PropertyRef Name="cod_programa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_preso__dis_pr__145C0A3F">
+          <End Role="tb_distrito" Type="Self.tb_distrito" Multiplicity="1" />
+          <End Role="tb_preso" Type="Self.tb_preso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_distrito">
+              <PropertyRef Name="cod_distrito" />
+            </Principal>
+            <Dependent Role="tb_preso">
+              <PropertyRef Name="dis_preso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_visita__cod_i__286302EC">
+          <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="1" />
+          <End Role="tb_visita" Type="Self.tb_visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ingreso">
+              <PropertyRef Name="cod_ingreso" />
+            </Principal>
+            <Dependent Role="tb_visita">
+              <PropertyRef Name="cod_ingreso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_visita__cod_v__29572725">
+          <End Role="tb_visitante" Type="Self.tb_visitante" Multiplicity="1" />
+          <End Role="tb_visita" Type="Self.tb_visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_visitante">
+              <PropertyRef Name="cod_visitante" />
+            </Principal>
+            <Dependent Role="tb_visita">
+              <PropertyRef Name="cod_visitante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_visita__dis_v__1920BF5C">
+          <End Role="tb_distrito" Type="Self.tb_distrito" Multiplicity="1" />
+          <End Role="tb_visitante" Type="Self.tb_visitante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_distrito">
+              <PropertyRef Name="cod_distrito" />
+            </Principal>
+            <Dependent Role="tb_visitante">
+              <PropertyRef Name="dis_visitante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_ActualizarIngreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codIngreso" Type="int" Mode="In" />
+          <Parameter Name="codPreso" Type="int" Mode="In" />
+          <Parameter Name="codCelda" Type="int" Mode="In" />
+          <Parameter Name="fec_ingreso" Type="date" Mode="In" />
+          <Parameter Name="fecSalida" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarInscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcodIns" Type="int" Mode="In" />
+          <Parameter Name="vcodIng" Type="int" Mode="In" />
+          <Parameter Name="vcodPro" Type="int" Mode="In" />
+          <Parameter Name="vfecIni" Type="date" Mode="In" />
+          <Parameter Name="vfecFini" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarPreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="int" Mode="In" />
+          <Parameter Name="vnom" Type="varchar" Mode="In" />
+          <Parameter Name="vape" Type="varchar" Mode="In" />
+          <Parameter Name="vdni" Type="char" Mode="In" />
+          <Parameter Name="vfec" Type="date" Mode="In" />
+          <Parameter Name="vdis" Type="int" Mode="In" />
+          <Parameter Name="vdir" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarVisita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="int" Mode="In" />
+          <Parameter Name="vcodI" Type="int" Mode="In" />
+          <Parameter Name="vcodV" Type="int" Mode="In" />
+          <Parameter Name="vfec" Type="date" Mode="In" />
+          <Parameter Name="motivo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarDelito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarIngreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarInscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarPreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarPresoPorDNI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vdni" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarPrograma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarVisita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarVisitante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarVisitantePorDNI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vdni" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarPreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vdni" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarVisita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcodI" Type="int" Mode="In" />
+          <Parameter Name="vcodD" Type="int" Mode="In" />
+          <Parameter Name="vpar" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarIngreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcodP" Type="int" Mode="In" />
+          <Parameter Name="vcodC" Type="int" Mode="In" />
+          <Parameter Name="vfecI" Type="date" Mode="In" />
+          <Parameter Name="vfecS" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarInscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcodIng" Type="int" Mode="In" />
+          <Parameter Name="vcodPro" Type="int" Mode="In" />
+          <Parameter Name="vfecini" Type="date" Mode="In" />
+          <Parameter Name="vfecfin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarPreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnom" Type="varchar" Mode="In" />
+          <Parameter Name="vape" Type="varchar" Mode="In" />
+          <Parameter Name="vdni" Type="char" Mode="In" />
+          <Parameter Name="vfec" Type="date" Mode="In" />
+          <Parameter Name="vdis" Type="int" Mode="In" />
+          <Parameter Name="vdir" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarVisita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcodI" Type="int" Mode="In" />
+          <Parameter Name="vcodV" Type="int" Mode="In" />
+          <Parameter Name="vfec" Type="date" Mode="In" />
+          <Parameter Name="vmo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarVisitante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnom" Type="varchar" Mode="In" />
+          <Parameter Name="vape" Type="varchar" Mode="In" />
+          <Parameter Name="vdni" Type="char" Mode="In" />
+          <Parameter Name="vdis" Type="int" Mode="In" />
+          <Parameter Name="vdir" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarDelito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarDistrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarIngresoNombres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarPreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarPrograma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarVisita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarVisitante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="PrisionModelStoreContainer">
+          <EntitySet Name="tb_celda" EntityType="Self.tb_celda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_delito" EntityType="Self.tb_delito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_detalle_ingreso" EntityType="Self.tb_detalle_ingreso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_distrito" EntityType="Self.tb_distrito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_ingreso" EntityType="Self.tb_ingreso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_inscripcion" EntityType="Self.tb_inscripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_pabellon" EntityType="Self.tb_pabellon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_preso" EntityType="Self.tb_preso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_programa" EntityType="Self.tb_programa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_visita" EntityType="Self.tb_visita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_visitante" EntityType="Self.tb_visitante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwDelitosIngreso" EntityType="Self.vwDelitosIngreso" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwDelitosIngreso].[nom_preso] AS [nom_preso], 
+    [vwDelitosIngreso].[dni_preso] AS [dni_preso], 
+    [vwDelitosIngreso].[cod_ingreso] AS [cod_ingreso], 
+    [vwDelitosIngreso].[fec_ingreso] AS [fec_ingreso], 
+    [vwDelitosIngreso].[participacion] AS [participacion], 
+    [vwDelitosIngreso].[des_delito] AS [des_delito], 
+    [vwDelitosIngreso].[cod_delito] AS [cod_delito], 
+    [vwDelitosIngreso].[penaMax_delito] AS [penaMax_delito]
+    FROM [dbo].[vwDelitosIngreso] AS [vwDelitosIngreso]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwIngresosPreso" EntityType="Self.vwIngresosPreso" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwIngresosPreso].[cod_ingreso] AS [cod_ingreso], 
+    [vwIngresosPreso].[fec_ingreso] AS [fec_ingreso], 
+    [vwIngresosPreso].[fec_salida] AS [fec_salida], 
+    [vwIngresosPreso].[cod_celda] AS [cod_celda], 
+    [vwIngresosPreso].[estado] AS [estado], 
+    [vwIngresosPreso].[cod_preso] AS [cod_preso], 
+    [vwIngresosPreso].[dni_preso] AS [dni_preso], 
+    [vwIngresosPreso].[nom_preso] AS [nom_preso], 
+    [vwIngresosPreso].[ape_preso] AS [ape_preso], 
+    [vwIngresosPreso].[dir_preso] AS [dir_preso], 
+    [vwIngresosPreso].[fecNac_preso] AS [fecNac_preso], 
+    [vwIngresosPreso].[nom_distrito] AS [nom_distrito]
+    FROM [dbo].[vwIngresosPreso] AS [vwIngresosPreso]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwProgramasIngreso" EntityType="Self.vwProgramasIngreso" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwProgramasIngreso].[nom_distrito] AS [nom_distrito], 
+    [vwProgramasIngreso].[nom_preso] AS [nom_preso], 
+    [vwProgramasIngreso].[ape_preso] AS [ape_preso], 
+    [vwProgramasIngreso].[dni_preso] AS [dni_preso], 
+    [vwProgramasIngreso].[fecNac_preso] AS [fecNac_preso], 
+    [vwProgramasIngreso].[dir_preso] AS [dir_preso], 
+    [vwProgramasIngreso].[cod_ingreso] AS [cod_ingreso], 
+    [vwProgramasIngreso].[cod_celda] AS [cod_celda], 
+    [vwProgramasIngreso].[fec_ingreso] AS [fec_ingreso], 
+    [vwProgramasIngreso].[fec_salida] AS [fec_salida], 
+    [vwProgramasIngreso].[estado] AS [estado], 
+    [vwProgramasIngreso].[fecha_ini] AS [fecha_ini], 
+    [vwProgramasIngreso].[fecha_fin] AS [fecha_fin], 
+    [vwProgramasIngreso].[nom_programa] AS [nom_programa], 
+    [vwProgramasIngreso].[des_programa] AS [des_programa]
+    FROM [dbo].[vwProgramasIngreso] AS [vwProgramasIngreso]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwVisitasIngreso" EntityType="Self.vwVisitasIngreso" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwVisitasIngreso].[nom_distrito] AS [nom_distrito], 
+    [vwVisitasIngreso].[nom_preso] AS [nom_preso], 
+    [vwVisitasIngreso].[ape_preso] AS [ape_preso], 
+    [vwVisitasIngreso].[dni_preso] AS [dni_preso], 
+    [vwVisitasIngreso].[cod_ingreso] AS [cod_ingreso], 
+    [vwVisitasIngreso].[fec_visita] AS [fec_visita], 
+    [vwVisitasIngreso].[motivo_visita] AS [motivo_visita], 
+    [vwVisitasIngreso].[nom_visitante] AS [nom_visitante], 
+    [vwVisitasIngreso].[dni_visitante] AS [dni_visitante], 
+    [vwVisitasIngreso].[ape_visitante] AS [ape_visitante], 
+    [vwVisitasIngreso].[dis_visitante] AS [dis_visitante], 
+    [vwVisitasIngreso].[dir_visitante] AS [dir_visitante]
+    FROM [dbo].[vwVisitasIngreso] AS [vwVisitasIngreso]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__tb_celda__cod_pa__1FCDBCEB" Association="Self.FK__tb_celda__cod_pa__1FCDBCEB">
+            <End Role="tb_pabellon" EntitySet="tb_pabellon" />
+            <End Role="tb_celda" EntitySet="tb_celda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_detall__cod_d__2D27B809" Association="Self.FK__tb_detall__cod_d__2D27B809">
+            <End Role="tb_delito" EntitySet="tb_delito" />
+            <End Role="tb_detalle_ingreso" EntitySet="tb_detalle_ingreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_detall__cod_i__2C3393D0" Association="Self.FK__tb_detall__cod_i__2C3393D0">
+            <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+            <End Role="tb_detalle_ingreso" EntitySet="tb_detalle_ingreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_ingres__cod_c__24927208" Association="Self.FK__tb_ingres__cod_c__24927208">
+            <End Role="tb_celda" EntitySet="tb_celda" />
+            <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_ingres__cod_p__239E4DCF" Association="Self.FK__tb_ingres__cod_p__239E4DCF">
+            <End Role="tb_preso" EntitySet="tb_preso" />
+            <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_inscri__cod_i__31EC6D26" Association="Self.FK__tb_inscri__cod_i__31EC6D26">
+            <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+            <End Role="tb_inscripcion" EntitySet="tb_inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_inscri__cod_p__32E0915F" Association="Self.FK__tb_inscri__cod_p__32E0915F">
+            <End Role="tb_programa" EntitySet="tb_programa" />
+            <End Role="tb_inscripcion" EntitySet="tb_inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_preso__dis_pr__145C0A3F" Association="Self.FK__tb_preso__dis_pr__145C0A3F">
+            <End Role="tb_distrito" EntitySet="tb_distrito" />
+            <End Role="tb_preso" EntitySet="tb_preso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_visita__cod_i__286302EC" Association="Self.FK__tb_visita__cod_i__286302EC">
+            <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+            <End Role="tb_visita" EntitySet="tb_visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_visita__cod_v__29572725" Association="Self.FK__tb_visita__cod_v__29572725">
+            <End Role="tb_visitante" EntitySet="tb_visitante" />
+            <End Role="tb_visita" EntitySet="tb_visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_visita__dis_v__1920BF5C" Association="Self.FK__tb_visita__dis_v__1920BF5C">
+            <End Role="tb_distrito" EntitySet="tb_distrito" />
+            <End Role="tb_visitante" EntitySet="tb_visitante" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrisionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_celda">
+          <Key>
+            <PropertyRef Name="cod_celda" />
+          </Key>
+          <Property Name="cod_celda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="capacidad_celda" Type="Int32" Nullable="false" />
+          <Property Name="actual_celda" Type="Int32" Nullable="false" />
+          <Property Name="cod_pabellon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_pabellon" Relationship="Self.FK__tb_celda__cod_pa__1FCDBCEB" FromRole="tb_celda" ToRole="tb_pabellon" />
+          <NavigationProperty Name="tb_ingreso" Relationship="Self.FK__tb_ingres__cod_c__24927208" FromRole="tb_celda" ToRole="tb_ingreso" />
+        </EntityType>
+        <EntityType Name="tb_delito">
+          <Key>
+            <PropertyRef Name="cod_delito" />
+          </Key>
+          <Property Name="cod_delito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="des_delito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="penaMax_delito" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_detalle_ingreso" Relationship="Self.FK__tb_detall__cod_d__2D27B809" FromRole="tb_delito" ToRole="tb_detalle_ingreso" />
+        </EntityType>
+        <EntityType Name="tb_detalle_ingreso">
+          <Key>
+            <PropertyRef Name="cod_ingreso" />
+            <PropertyRef Name="cod_delito" />
+          </Key>
+          <Property Name="cod_ingreso" Type="Int32" Nullable="false" />
+          <Property Name="cod_delito" Type="Int32" Nullable="false" />
+          <Property Name="participacion" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_delito" Relationship="Self.FK__tb_detall__cod_d__2D27B809" FromRole="tb_detalle_ingreso" ToRole="tb_delito" />
+          <NavigationProperty Name="tb_ingreso" Relationship="Self.FK__tb_detall__cod_i__2C3393D0" FromRole="tb_detalle_ingreso" ToRole="tb_ingreso" />
+        </EntityType>
+        <EntityType Name="tb_distrito">
+          <Key>
+            <PropertyRef Name="cod_distrito" />
+          </Key>
+          <Property Name="cod_distrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_distrito" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_preso" Relationship="Self.FK__tb_preso__dis_pr__145C0A3F" FromRole="tb_distrito" ToRole="tb_preso" />
+          <NavigationProperty Name="tb_visitante" Relationship="Self.FK__tb_visita__dis_v__1920BF5C" FromRole="tb_distrito" ToRole="tb_visitante" />
+        </EntityType>
+        <EntityType Name="tb_ingreso">
+          <Key>
+            <PropertyRef Name="cod_ingreso" />
+          </Key>
+          <Property Name="cod_ingreso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cod_preso" Type="Int32" Nullable="false" />
+          <Property Name="cod_celda" Type="Int32" Nullable="false" />
+          <Property Name="fec_ingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fec_salida" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="estado" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tb_celda" Relationship="Self.FK__tb_ingres__cod_c__24927208" FromRole="tb_ingreso" ToRole="tb_celda" />
+          <NavigationProperty Name="tb_detalle_ingreso" Relationship="Self.FK__tb_detall__cod_i__2C3393D0" FromRole="tb_ingreso" ToRole="tb_detalle_ingreso" />
+          <NavigationProperty Name="tb_preso" Relationship="Self.FK__tb_ingres__cod_p__239E4DCF" FromRole="tb_ingreso" ToRole="tb_preso" />
+          <NavigationProperty Name="tb_inscripcion" Relationship="Self.FK__tb_inscri__cod_i__31EC6D26" FromRole="tb_ingreso" ToRole="tb_inscripcion" />
+          <NavigationProperty Name="tb_visita" Relationship="Self.FK__tb_visita__cod_i__286302EC" FromRole="tb_ingreso" ToRole="tb_visita" />
+        </EntityType>
+        <EntityType Name="tb_inscripcion">
+          <Key>
+            <PropertyRef Name="cod_inscripcion" />
+          </Key>
+          <Property Name="cod_inscripcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cod_ingreso" Type="Int32" Nullable="false" />
+          <Property Name="cod_programa" Type="Int32" Nullable="false" />
+          <Property Name="fecha_ini" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tb_ingreso" Relationship="Self.FK__tb_inscri__cod_i__31EC6D26" FromRole="tb_inscripcion" ToRole="tb_ingreso" />
+          <NavigationProperty Name="tb_programa" Relationship="Self.FK__tb_inscri__cod_p__32E0915F" FromRole="tb_inscripcion" ToRole="tb_programa" />
+        </EntityType>
+        <EntityType Name="tb_pabellon">
+          <Key>
+            <PropertyRef Name="cod_pabellon" />
+          </Key>
+          <Property Name="cod_pabellon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_pabellon" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_celda" Relationship="Self.FK__tb_celda__cod_pa__1FCDBCEB" FromRole="tb_pabellon" ToRole="tb_celda" />
+        </EntityType>
+        <EntityType Name="tb_preso">
+          <Key>
+            <PropertyRef Name="cod_preso" />
+          </Key>
+          <Property Name="cod_preso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_preso" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape_preso" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dni_preso" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fecNac_preso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dis_preso" Type="Int32" Nullable="false" />
+          <Property Name="dir_preso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_distrito" Relationship="Self.FK__tb_preso__dis_pr__145C0A3F" FromRole="tb_preso" ToRole="tb_distrito" />
+          <NavigationProperty Name="tb_ingreso" Relationship="Self.FK__tb_ingres__cod_p__239E4DCF" FromRole="tb_preso" ToRole="tb_ingreso" />
+        </EntityType>
+        <EntityType Name="tb_programa">
+          <Key>
+            <PropertyRef Name="cod_programa" />
+          </Key>
+          <Property Name="cod_programa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_programa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="des_programa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_inscripcion" Relationship="Self.FK__tb_inscri__cod_p__32E0915F" FromRole="tb_programa" ToRole="tb_inscripcion" />
+        </EntityType>
+        <EntityType Name="tb_visita">
+          <Key>
+            <PropertyRef Name="cod_visita" />
+          </Key>
+          <Property Name="cod_visita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cod_ingreso" Type="Int32" Nullable="false" />
+          <Property Name="cod_visitante" Type="Int32" Nullable="false" />
+          <Property Name="fec_visita" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="motivo_visita" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_ingreso" Relationship="Self.FK__tb_visita__cod_i__286302EC" FromRole="tb_visita" ToRole="tb_ingreso" />
+          <NavigationProperty Name="tb_visitante" Relationship="Self.FK__tb_visita__cod_v__29572725" FromRole="tb_visita" ToRole="tb_visitante" />
+        </EntityType>
+        <EntityType Name="tb_visitante">
+          <Key>
+            <PropertyRef Name="cod_visitante" />
+          </Key>
+          <Property Name="cod_visitante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_visitante" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape_visitante" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dni_visitante" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dis_visitante" Type="Int32" Nullable="false" />
+          <Property Name="dir_visitante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_distrito" Relationship="Self.FK__tb_visita__dis_v__1920BF5C" FromRole="tb_visitante" ToRole="tb_distrito" />
+          <NavigationProperty Name="tb_visita" Relationship="Self.FK__tb_visita__cod_v__29572725" FromRole="tb_visitante" ToRole="tb_visita" />
+        </EntityType>
+        <EntityType Name="vwDelitosIngreso">
+          <Key>
+            <PropertyRef Name="cod_ingreso" />
+            <PropertyRef Name="fec_ingreso" />
+            <PropertyRef Name="participacion" />
+            <PropertyRef Name="des_delito" />
+            <PropertyRef Name="cod_delito" />
+            <PropertyRef Name="penaMax_delito" />
+            <PropertyRef Name="nom_preso" />
+            <PropertyRef Name="dni_preso" />
+          </Key>
+          <Property Name="cod_ingreso" Type="Int32" Nullable="false" />
+          <Property Name="fec_ingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="participacion" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="des_delito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_delito" Type="Int32" Nullable="false" />
+          <Property Name="penaMax_delito" Type="Int32" Nullable="false" />
+          <Property Name="nom_preso" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="dni_preso" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwIngresosPreso">
+          <Key>
+            <PropertyRef Name="cod_ingreso" />
+            <PropertyRef Name="fec_ingreso" />
+            <PropertyRef Name="fec_salida" />
+            <PropertyRef Name="cod_celda" />
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="cod_preso" />
+            <PropertyRef Name="dni_preso" />
+            <PropertyRef Name="nom_preso" />
+            <PropertyRef Name="ape_preso" />
+            <PropertyRef Name="dir_preso" />
+            <PropertyRef Name="fecNac_preso" />
+            <PropertyRef Name="nom_distrito" />
+          </Key>
+          <Property Name="cod_ingreso" Type="Int32" Nullable="false" />
+          <Property Name="fec_ingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fec_salida" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cod_celda" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_preso" Type="Int32" Nullable="false" />
+          <Property Name="dni_preso" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="nom_preso" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape_preso" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dir_preso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecNac_preso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nom_distrito" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwProgramasIngreso">
+          <Key>
+            <PropertyRef Name="nom_distrito" />
+            <PropertyRef Name="nom_preso" />
+            <PropertyRef Name="ape_preso" />
+            <PropertyRef Name="dni_preso" />
+            <PropertyRef Name="fecNac_preso" />
+            <PropertyRef Name="dir_preso" />
+            <PropertyRef Name="cod_ingreso" />
+            <PropertyRef Name="cod_celda" />
+            <PropertyRef Name="fec_ingreso" />
+            <PropertyRef Name="fec_salida" />
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="fecha_ini" />
+            <PropertyRef Name="fecha_fin" />
+            <PropertyRef Name="nom_programa" />
+            <PropertyRef Name="des_programa" />
+          </Key>
+          <Property Name="nom_distrito" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom_preso" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape_preso" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dni_preso" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fecNac_preso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dir_preso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_ingreso" Type="Int32" Nullable="false" />
+          <Property Name="cod_celda" Type="Int32" Nullable="false" />
+          <Property Name="fec_ingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fec_salida" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="estado" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_ini" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nom_programa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="des_programa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwVisitasIngreso">
+          <Key>
+            <PropertyRef Name="nom_distrito" />
+            <PropertyRef Name="nom_preso" />
+            <PropertyRef Name="ape_preso" />
+            <PropertyRef Name="dni_preso" />
+            <PropertyRef Name="cod_ingreso" />
+            <PropertyRef Name="fec_visita" />
+            <PropertyRef Name="motivo_visita" />
+            <PropertyRef Name="nom_visitante" />
+            <PropertyRef Name="dni_visitante" />
+            <PropertyRef Name="ape_visitante" />
+            <PropertyRef Name="dis_visitante" />
+            <PropertyRef Name="dir_visitante" />
+          </Key>
+          <Property Name="nom_distrito" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom_preso" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape_preso" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dni_preso" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cod_ingreso" Type="Int32" Nullable="false" />
+          <Property Name="fec_visita" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="motivo_visita" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom_visitante" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dni_visitante" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ape_visitante" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dis_visitante" Type="Int32" Nullable="false" />
+          <Property Name="dir_visitante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tb_celda__cod_pa__1FCDBCEB">
+          <End Role="tb_pabellon" Type="Self.tb_pabellon" Multiplicity="1" />
+          <End Role="tb_celda" Type="Self.tb_celda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_pabellon">
+              <PropertyRef Name="cod_pabellon" />
+            </Principal>
+            <Dependent Role="tb_celda">
+              <PropertyRef Name="cod_pabellon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_ingres__cod_c__24927208">
+          <End Role="tb_celda" Type="Self.tb_celda" Multiplicity="1" />
+          <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_celda">
+              <PropertyRef Name="cod_celda" />
+            </Principal>
+            <Dependent Role="tb_ingreso">
+              <PropertyRef Name="cod_celda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_detall__cod_d__2D27B809">
+          <End Role="tb_delito" Type="Self.tb_delito" Multiplicity="1" />
+          <End Role="tb_detalle_ingreso" Type="Self.tb_detalle_ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_delito">
+              <PropertyRef Name="cod_delito" />
+            </Principal>
+            <Dependent Role="tb_detalle_ingreso">
+              <PropertyRef Name="cod_delito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_detall__cod_i__2C3393D0">
+          <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="1" />
+          <End Role="tb_detalle_ingreso" Type="Self.tb_detalle_ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ingreso">
+              <PropertyRef Name="cod_ingreso" />
+            </Principal>
+            <Dependent Role="tb_detalle_ingreso">
+              <PropertyRef Name="cod_ingreso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_preso__dis_pr__145C0A3F">
+          <End Role="tb_distrito" Type="Self.tb_distrito" Multiplicity="1" />
+          <End Role="tb_preso" Type="Self.tb_preso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_distrito">
+              <PropertyRef Name="cod_distrito" />
+            </Principal>
+            <Dependent Role="tb_preso">
+              <PropertyRef Name="dis_preso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_visita__dis_v__1920BF5C">
+          <End Role="tb_distrito" Type="Self.tb_distrito" Multiplicity="1" />
+          <End Role="tb_visitante" Type="Self.tb_visitante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_distrito">
+              <PropertyRef Name="cod_distrito" />
+            </Principal>
+            <Dependent Role="tb_visitante">
+              <PropertyRef Name="dis_visitante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_ingres__cod_p__239E4DCF">
+          <End Role="tb_preso" Type="Self.tb_preso" Multiplicity="1" />
+          <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_preso">
+              <PropertyRef Name="cod_preso" />
+            </Principal>
+            <Dependent Role="tb_ingreso">
+              <PropertyRef Name="cod_preso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_inscri__cod_i__31EC6D26">
+          <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="1" />
+          <End Role="tb_inscripcion" Type="Self.tb_inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ingreso">
+              <PropertyRef Name="cod_ingreso" />
+            </Principal>
+            <Dependent Role="tb_inscripcion">
+              <PropertyRef Name="cod_ingreso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_visita__cod_i__286302EC">
+          <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="1" />
+          <End Role="tb_visita" Type="Self.tb_visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ingreso">
+              <PropertyRef Name="cod_ingreso" />
+            </Principal>
+            <Dependent Role="tb_visita">
+              <PropertyRef Name="cod_ingreso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_inscri__cod_p__32E0915F">
+          <End Role="tb_programa" Type="Self.tb_programa" Multiplicity="1" />
+          <End Role="tb_inscripcion" Type="Self.tb_inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_programa">
+              <PropertyRef Name="cod_programa" />
+            </Principal>
+            <Dependent Role="tb_inscripcion">
+              <PropertyRef Name="cod_programa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_visita__cod_v__29572725">
+          <End Role="tb_visitante" Type="Self.tb_visitante" Multiplicity="1" />
+          <End Role="tb_visita" Type="Self.tb_visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_visitante">
+              <PropertyRef Name="cod_visitante" />
+            </Principal>
+            <Dependent Role="tb_visita">
+              <PropertyRef Name="cod_visitante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PrisionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_celda" EntityType="Self.tb_celda" />
+          <EntitySet Name="tb_delito" EntityType="Self.tb_delito" />
+          <EntitySet Name="tb_detalle_ingreso" EntityType="Self.tb_detalle_ingreso" />
+          <EntitySet Name="tb_distrito" EntityType="Self.tb_distrito" />
+          <EntitySet Name="tb_ingreso" EntityType="Self.tb_ingreso" />
+          <EntitySet Name="tb_inscripcion" EntityType="Self.tb_inscripcion" />
+          <EntitySet Name="tb_pabellon" EntityType="Self.tb_pabellon" />
+          <EntitySet Name="tb_preso" EntityType="Self.tb_preso" />
+          <EntitySet Name="tb_programa" EntityType="Self.tb_programa" />
+          <EntitySet Name="tb_visita" EntityType="Self.tb_visita" />
+          <EntitySet Name="tb_visitante" EntityType="Self.tb_visitante" />
+          <EntitySet Name="vwDelitosIngreso" EntityType="Self.vwDelitosIngreso" />
+          <EntitySet Name="vwIngresosPreso" EntityType="Self.vwIngresosPreso" />
+          <EntitySet Name="vwProgramasIngreso" EntityType="Self.vwProgramasIngreso" />
+          <EntitySet Name="vwVisitasIngreso" EntityType="Self.vwVisitasIngreso" />
+          <AssociationSet Name="FK__tb_celda__cod_pa__1FCDBCEB" Association="Self.FK__tb_celda__cod_pa__1FCDBCEB">
+            <End Role="tb_pabellon" EntitySet="tb_pabellon" />
+            <End Role="tb_celda" EntitySet="tb_celda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_ingres__cod_c__24927208" Association="Self.FK__tb_ingres__cod_c__24927208">
+            <End Role="tb_celda" EntitySet="tb_celda" />
+            <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_detall__cod_d__2D27B809" Association="Self.FK__tb_detall__cod_d__2D27B809">
+            <End Role="tb_delito" EntitySet="tb_delito" />
+            <End Role="tb_detalle_ingreso" EntitySet="tb_detalle_ingreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_detall__cod_i__2C3393D0" Association="Self.FK__tb_detall__cod_i__2C3393D0">
+            <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+            <End Role="tb_detalle_ingreso" EntitySet="tb_detalle_ingreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_preso__dis_pr__145C0A3F" Association="Self.FK__tb_preso__dis_pr__145C0A3F">
+            <End Role="tb_distrito" EntitySet="tb_distrito" />
+            <End Role="tb_preso" EntitySet="tb_preso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_visita__dis_v__1920BF5C" Association="Self.FK__tb_visita__dis_v__1920BF5C">
+            <End Role="tb_distrito" EntitySet="tb_distrito" />
+            <End Role="tb_visitante" EntitySet="tb_visitante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_ingres__cod_p__239E4DCF" Association="Self.FK__tb_ingres__cod_p__239E4DCF">
+            <End Role="tb_preso" EntitySet="tb_preso" />
+            <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_inscri__cod_i__31EC6D26" Association="Self.FK__tb_inscri__cod_i__31EC6D26">
+            <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+            <End Role="tb_inscripcion" EntitySet="tb_inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_visita__cod_i__286302EC" Association="Self.FK__tb_visita__cod_i__286302EC">
+            <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+            <End Role="tb_visita" EntitySet="tb_visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_inscri__cod_p__32E0915F" Association="Self.FK__tb_inscri__cod_p__32E0915F">
+            <End Role="tb_programa" EntitySet="tb_programa" />
+            <End Role="tb_inscripcion" EntitySet="tb_inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_visita__cod_v__29572725" Association="Self.FK__tb_visita__cod_v__29572725">
+            <End Role="tb_visitante" EntitySet="tb_visitante" />
+            <End Role="tb_visita" EntitySet="tb_visita" />
+          </AssociationSet>
+          <FunctionImport Name="usp_ActualizarIngreso">
+            <Parameter Name="codIngreso" Mode="In" Type="Int32" />
+            <Parameter Name="codPreso" Mode="In" Type="Int32" />
+            <Parameter Name="codCelda" Mode="In" Type="Int32" />
+            <Parameter Name="fec_ingreso" Mode="In" Type="DateTime" />
+            <Parameter Name="fecSalida" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarInscripcion">
+            <Parameter Name="vcodIns" Mode="In" Type="Int32" />
+            <Parameter Name="vcodIng" Mode="In" Type="Int32" />
+            <Parameter Name="vcodPro" Mode="In" Type="Int32" />
+            <Parameter Name="vfecIni" Mode="In" Type="DateTime" />
+            <Parameter Name="vfecFini" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarPreso">
+            <Parameter Name="vcod" Mode="In" Type="Int32" />
+            <Parameter Name="vnom" Mode="In" Type="String" />
+            <Parameter Name="vape" Mode="In" Type="String" />
+            <Parameter Name="vdni" Mode="In" Type="String" />
+            <Parameter Name="vfec" Mode="In" Type="DateTime" />
+            <Parameter Name="vdis" Mode="In" Type="Int32" />
+            <Parameter Name="vdir" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarVisita">
+            <Parameter Name="vcod" Mode="In" Type="Int32" />
+            <Parameter Name="vcodI" Mode="In" Type="Int32" />
+            <Parameter Name="vcodV" Mode="In" Type="Int32" />
+            <Parameter Name="vfec" Mode="In" Type="DateTime" />
+            <Parameter Name="motivo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarDelito" ReturnType="Collection(PrisionModel.usp_ConsultarDelito_Result)">
+          <Parameter Name="vcod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarIngreso" ReturnType="Collection(PrisionModel.usp_ConsultarIngreso_Result)">
+          <Parameter Name="vcod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarInscripcion" ReturnType="Collection(PrisionModel.usp_ConsultarInscripcion_Result)">
+          <Parameter Name="vcod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarPreso" ReturnType="Collection(PrisionModel.usp_ConsultarPreso_Result)">
+          <Parameter Name="vcod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarPresoPorDNI" ReturnType="Collection(PrisionModel.usp_ConsultarPresoPorDNI_Result)">
+          <Parameter Name="vdni" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarPrograma" ReturnType="Collection(PrisionModel.usp_ConsultarPrograma_Result)">
+          <Parameter Name="vcod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarVisita" ReturnType="Collection(PrisionModel.usp_ConsultarVisita_Result)">
+          <Parameter Name="vcod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarVisitante" ReturnType="Collection(PrisionModel.usp_ConsultarVisitante_Result)">
+          <Parameter Name="vcod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarVisitantePorDNI" ReturnType="Collection(PrisionModel.usp_ConsultarVisitantePorDNI_Result)">
+          <Parameter Name="vdni" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarPreso">
+          <Parameter Name="vdni" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarVisita">
+          <Parameter Name="vcod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarDetalle">
+            <Parameter Name="vcodI" Mode="In" Type="Int32" />
+            <Parameter Name="vcodD" Mode="In" Type="Int32" />
+            <Parameter Name="vpar" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarIngreso">
+            <Parameter Name="vcodP" Mode="In" Type="Int32" />
+            <Parameter Name="vcodC" Mode="In" Type="Int32" />
+            <Parameter Name="vfecI" Mode="In" Type="DateTime" />
+            <Parameter Name="vfecS" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarInscripcion">
+            <Parameter Name="vcodIng" Mode="In" Type="Int32" />
+            <Parameter Name="vcodPro" Mode="In" Type="Int32" />
+            <Parameter Name="vfecini" Mode="In" Type="DateTime" />
+            <Parameter Name="vfecfin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarPreso">
+            <Parameter Name="vnom" Mode="In" Type="String" />
+            <Parameter Name="vape" Mode="In" Type="String" />
+            <Parameter Name="vdni" Mode="In" Type="String" />
+            <Parameter Name="vfec" Mode="In" Type="DateTime" />
+            <Parameter Name="vdis" Mode="In" Type="Int32" />
+            <Parameter Name="vdir" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarVisita">
+            <Parameter Name="vcodI" Mode="In" Type="Int32" />
+            <Parameter Name="vcodV" Mode="In" Type="Int32" />
+            <Parameter Name="vfec" Mode="In" Type="DateTime" />
+            <Parameter Name="vmo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarVisitante">
+            <Parameter Name="vnom" Mode="In" Type="String" />
+            <Parameter Name="vape" Mode="In" Type="String" />
+            <Parameter Name="vdni" Mode="In" Type="String" />
+            <Parameter Name="vdis" Mode="In" Type="Int32" />
+            <Parameter Name="vdir" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarDelito" ReturnType="Collection(PrisionModel.usp_ListarDelito_Result)" />
+          <FunctionImport Name="usp_ListarDistrito" ReturnType="Collection(PrisionModel.usp_ListarDistrito_Result)" />
+          <FunctionImport Name="usp_ListarIngresoNombres" ReturnType="Collection(PrisionModel.usp_ListarIngresoNombres_Result)" />
+          <FunctionImport Name="usp_ListarPreso" ReturnType="Collection(PrisionModel.usp_ListarPreso_Result)" />
+          <FunctionImport Name="usp_ListarPrograma" ReturnType="Collection(PrisionModel.usp_ListarPrograma_Result)" />
+          <FunctionImport Name="usp_ListarVisita" ReturnType="Collection(PrisionModel.usp_ListarVisita_Result)" />
+          <FunctionImport Name="usp_ListarVisitante" ReturnType="Collection(PrisionModel.usp_ListarVisitante_Result)" />
+        </EntityContainer>
+        <ComplexType Name="usp_ConsultarDelito_Result">
+          <Property Type="Int32" Name="cod_delito" Nullable="false" />
+          <Property Type="String" Name="des_delito" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="penaMax_delito" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarIngreso_Result">
+          <Property Type="Int32" Name="cod_ingreso" Nullable="false" />
+          <Property Type="Int32" Name="cod_preso" Nullable="false" />
+          <Property Type="Int32" Name="cod_celda" Nullable="false" />
+          <Property Type="DateTime" Name="fec_ingreso" Nullable="false" />
+          <Property Type="DateTime" Name="fec_salida" Nullable="false" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarInscripcion_Result">
+          <Property Type="Int32" Name="cod_inscripcion" Nullable="false" />
+          <Property Type="Int32" Name="cod_ingreso" Nullable="false" />
+          <Property Type="Int32" Name="cod_programa" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_ini" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_fin" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarPreso_Result">
+          <Property Type="Int32" Name="cod_preso" Nullable="false" />
+          <Property Type="String" Name="nom_preso" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="ape_preso" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="dni_preso" Nullable="false" MaxLength="8" />
+          <Property Type="DateTime" Name="fecNac_preso" Nullable="false" />
+          <Property Type="Int32" Name="dis_preso" Nullable="false" />
+          <Property Type="String" Name="dir_preso" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarPresoPorDNI_Result">
+          <Property Type="Int32" Name="cod_preso" Nullable="false" />
+          <Property Type="String" Name="nom_preso" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="ape_preso" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="dni_preso" Nullable="false" MaxLength="8" />
+          <Property Type="DateTime" Name="fecNac_preso" Nullable="false" />
+          <Property Type="Int32" Name="dis_preso" Nullable="false" />
+          <Property Type="String" Name="dir_preso" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarPrograma_Result">
+          <Property Type="Int32" Name="cod_programa" Nullable="false" />
+          <Property Type="String" Name="nom_programa" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="des_programa" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarVisita_Result">
+          <Property Type="Int32" Name="cod_visita" Nullable="false" />
+          <Property Type="Int32" Name="cod_ingreso" Nullable="false" />
+          <Property Type="Int32" Name="cod_visitante" Nullable="false" />
+          <Property Type="DateTime" Name="fec_visita" Nullable="false" />
+          <Property Type="String" Name="motivo_visita" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarVisitante_Result">
+          <Property Type="Int32" Name="cod_visitante" Nullable="false" />
+          <Property Type="String" Name="nom_visitante" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="ape_visitante" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="dni_visitante" Nullable="false" MaxLength="8" />
+          <Property Type="Int32" Name="dis_visitante" Nullable="false" />
+          <Property Type="String" Name="dir_visitante" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarVisitantePorDNI_Result">
+          <Property Type="Int32" Name="cod_visitante" Nullable="false" />
+          <Property Type="String" Name="nom_visitante" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="ape_visitante" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="dni_visitante" Nullable="false" MaxLength="8" />
+          <Property Type="Int32" Name="dis_visitante" Nullable="false" />
+          <Property Type="String" Name="dir_visitante" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarDelito_Result">
+          <Property Type="Int32" Name="cod_delito" Nullable="false" />
+          <Property Type="String" Name="des_delito" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="penaMax_delito" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarDistrito_Result">
+          <Property Type="Int32" Name="cod_distrito" Nullable="false" />
+          <Property Type="String" Name="nom_distrito" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarIngresoNombres_Result">
+          <Property Type="Int32" Name="cod_ingreso" Nullable="false" />
+          <Property Type="Int32" Name="cod_preso" Nullable="false" />
+          <Property Type="String" Name="nom_preso" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="ape_preso" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="dni_preso" Nullable="false" MaxLength="8" />
+          <Property Type="Int32" Name="cod_celda" Nullable="false" />
+          <Property Type="DateTime" Name="fec_ingreso" Nullable="false" />
+          <Property Type="DateTime" Name="fec_salida" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPreso_Result">
+          <Property Type="Int32" Name="cod_preso" Nullable="false" />
+          <Property Type="String" Name="nom_preso" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="ape_preso" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="dni_preso" Nullable="false" MaxLength="8" />
+          <Property Type="DateTime" Name="fecNac_preso" Nullable="false" />
+          <Property Type="Int32" Name="dis_preso" Nullable="false" />
+          <Property Type="String" Name="dir_preso" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPrograma_Result">
+          <Property Type="Int32" Name="cod_programa" Nullable="false" />
+          <Property Type="String" Name="nom_programa" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="des_programa" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarVisita_Result">
+          <Property Type="Int32" Name="cod_visita" Nullable="false" />
+          <Property Type="Int32" Name="cod_ingreso" Nullable="false" />
+          <Property Type="Int32" Name="cod_visitante" Nullable="false" />
+          <Property Type="DateTime" Name="fec_visita" Nullable="false" />
+          <Property Type="String" Name="motivo_visita" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarVisitante_Result">
+          <Property Type="Int32" Name="cod_visitante" Nullable="false" />
+          <Property Type="String" Name="nom_visitante" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="ape_visitante" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="dni_visitante" Nullable="false" MaxLength="8" />
+          <Property Type="Int32" Name="dis_visitante" Nullable="false" />
+          <Property Type="String" Name="dir_visitante" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PrisionModelStoreContainer" CdmEntityContainer="PrisionEntities">
+          <EntitySetMapping Name="tb_celda">
+            <EntityTypeMapping TypeName="PrisionModel.tb_celda">
+              <MappingFragment StoreEntitySet="tb_celda">
+                <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+                <ScalarProperty Name="capacidad_celda" ColumnName="capacidad_celda" />
+                <ScalarProperty Name="actual_celda" ColumnName="actual_celda" />
+                <ScalarProperty Name="cod_pabellon" ColumnName="cod_pabellon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_delito">
+            <EntityTypeMapping TypeName="PrisionModel.tb_delito">
+              <MappingFragment StoreEntitySet="tb_delito">
+                <ScalarProperty Name="cod_delito" ColumnName="cod_delito" />
+                <ScalarProperty Name="des_delito" ColumnName="des_delito" />
+                <ScalarProperty Name="penaMax_delito" ColumnName="penaMax_delito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_detalle_ingreso">
+            <EntityTypeMapping TypeName="PrisionModel.tb_detalle_ingreso">
+              <MappingFragment StoreEntitySet="tb_detalle_ingreso">
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="cod_delito" ColumnName="cod_delito" />
+                <ScalarProperty Name="participacion" ColumnName="participacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_distrito">
+            <EntityTypeMapping TypeName="PrisionModel.tb_distrito">
+              <MappingFragment StoreEntitySet="tb_distrito">
+                <ScalarProperty Name="cod_distrito" ColumnName="cod_distrito" />
+                <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ingreso">
+            <EntityTypeMapping TypeName="PrisionModel.tb_ingreso">
+              <MappingFragment StoreEntitySet="tb_ingreso">
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+                <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+                <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+                <ScalarProperty Name="fec_salida" ColumnName="fec_salida" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_inscripcion">
+            <EntityTypeMapping TypeName="PrisionModel.tb_inscripcion">
+              <MappingFragment StoreEntitySet="tb_inscripcion">
+                <ScalarProperty Name="cod_inscripcion" ColumnName="cod_inscripcion" />
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="cod_programa" ColumnName="cod_programa" />
+                <ScalarProperty Name="fecha_ini" ColumnName="fecha_ini" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_pabellon">
+            <EntityTypeMapping TypeName="PrisionModel.tb_pabellon">
+              <MappingFragment StoreEntitySet="tb_pabellon">
+                <ScalarProperty Name="cod_pabellon" ColumnName="cod_pabellon" />
+                <ScalarProperty Name="nom_pabellon" ColumnName="nom_pabellon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_preso">
+            <EntityTypeMapping TypeName="PrisionModel.tb_preso">
+              <MappingFragment StoreEntitySet="tb_preso">
+                <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+                <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+                <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+                <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+                <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+                <ScalarProperty Name="dis_preso" ColumnName="dis_preso" />
+                <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_programa">
+            <EntityTypeMapping TypeName="PrisionModel.tb_programa">
+              <MappingFragment StoreEntitySet="tb_programa">
+                <ScalarProperty Name="cod_programa" ColumnName="cod_programa" />
+                <ScalarProperty Name="nom_programa" ColumnName="nom_programa" />
+                <ScalarProperty Name="des_programa" ColumnName="des_programa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_visita">
+            <EntityTypeMapping TypeName="PrisionModel.tb_visita">
+              <MappingFragment StoreEntitySet="tb_visita">
+                <ScalarProperty Name="cod_visita" ColumnName="cod_visita" />
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+                <ScalarProperty Name="fec_visita" ColumnName="fec_visita" />
+                <ScalarProperty Name="motivo_visita" ColumnName="motivo_visita" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_visitante">
+            <EntityTypeMapping TypeName="PrisionModel.tb_visitante">
+              <MappingFragment StoreEntitySet="tb_visitante">
+                <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+                <ScalarProperty Name="nom_visitante" ColumnName="nom_visitante" />
+                <ScalarProperty Name="ape_visitante" ColumnName="ape_visitante" />
+                <ScalarProperty Name="dni_visitante" ColumnName="dni_visitante" />
+                <ScalarProperty Name="dis_visitante" ColumnName="dis_visitante" />
+                <ScalarProperty Name="dir_visitante" ColumnName="dir_visitante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwDelitosIngreso">
+            <EntityTypeMapping TypeName="PrisionModel.vwDelitosIngreso">
+              <MappingFragment StoreEntitySet="vwDelitosIngreso">
+                <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+                <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+                <ScalarProperty Name="participacion" ColumnName="participacion" />
+                <ScalarProperty Name="des_delito" ColumnName="des_delito" />
+                <ScalarProperty Name="cod_delito" ColumnName="cod_delito" />
+                <ScalarProperty Name="penaMax_delito" ColumnName="penaMax_delito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwIngresosPreso">
+            <EntityTypeMapping TypeName="PrisionModel.vwIngresosPreso">
+              <MappingFragment StoreEntitySet="vwIngresosPreso">
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+                <ScalarProperty Name="fec_salida" ColumnName="fec_salida" />
+                <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+                <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+                <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+                <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+                <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+                <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+                <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwProgramasIngreso">
+            <EntityTypeMapping TypeName="PrisionModel.vwProgramasIngreso">
+              <MappingFragment StoreEntitySet="vwProgramasIngreso">
+                <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+                <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+                <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+                <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+                <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+                <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+                <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+                <ScalarProperty Name="fec_salida" ColumnName="fec_salida" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_ini" ColumnName="fecha_ini" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="nom_programa" ColumnName="nom_programa" />
+                <ScalarProperty Name="des_programa" ColumnName="des_programa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwVisitasIngreso">
+            <EntityTypeMapping TypeName="PrisionModel.vwVisitasIngreso">
+              <MappingFragment StoreEntitySet="vwVisitasIngreso">
+                <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+                <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+                <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+                <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="fec_visita" ColumnName="fec_visita" />
+                <ScalarProperty Name="motivo_visita" ColumnName="motivo_visita" />
+                <ScalarProperty Name="nom_visitante" ColumnName="nom_visitante" />
+                <ScalarProperty Name="dni_visitante" ColumnName="dni_visitante" />
+                <ScalarProperty Name="ape_visitante" ColumnName="ape_visitante" />
+                <ScalarProperty Name="dis_visitante" ColumnName="dis_visitante" />
+                <ScalarProperty Name="dir_visitante" ColumnName="dir_visitante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_ActualizarIngreso" FunctionName="PrisionModel.Store.usp_ActualizarIngreso" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarInscripcion" FunctionName="PrisionModel.Store.usp_ActualizarInscripcion" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarPreso" FunctionName="PrisionModel.Store.usp_ActualizarPreso" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarVisita" FunctionName="PrisionModel.Store.usp_ActualizarVisita" />
+          <FunctionImportMapping FunctionImportName="usp_ConsultarDelito" FunctionName="PrisionModel.Store.usp_ConsultarDelito">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarDelito_Result">
+                <ScalarProperty Name="cod_delito" ColumnName="cod_delito" />
+                <ScalarProperty Name="des_delito" ColumnName="des_delito" />
+                <ScalarProperty Name="penaMax_delito" ColumnName="penaMax_delito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarIngreso" FunctionName="PrisionModel.Store.usp_ConsultarIngreso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarIngreso_Result">
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+                <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+                <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+                <ScalarProperty Name="fec_salida" ColumnName="fec_salida" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarInscripcion" FunctionName="PrisionModel.Store.usp_ConsultarInscripcion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarInscripcion_Result">
+                <ScalarProperty Name="cod_inscripcion" ColumnName="cod_inscripcion" />
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="cod_programa" ColumnName="cod_programa" />
+                <ScalarProperty Name="fecha_ini" ColumnName="fecha_ini" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarPreso" FunctionName="PrisionModel.Store.usp_ConsultarPreso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarPreso_Result">
+                <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+                <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+                <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+                <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+                <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+                <ScalarProperty Name="dis_preso" ColumnName="dis_preso" />
+                <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarPresoPorDNI" FunctionName="PrisionModel.Store.usp_ConsultarPresoPorDNI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarPresoPorDNI_Result">
+                <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+                <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+                <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+                <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+                <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+                <ScalarProperty Name="dis_preso" ColumnName="dis_preso" />
+                <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarPrograma" FunctionName="PrisionModel.Store.usp_ConsultarPrograma">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarPrograma_Result">
+                <ScalarProperty Name="cod_programa" ColumnName="cod_programa" />
+                <ScalarProperty Name="nom_programa" ColumnName="nom_programa" />
+                <ScalarProperty Name="des_programa" ColumnName="des_programa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarVisita" FunctionName="PrisionModel.Store.usp_ConsultarVisita">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarVisita_Result">
+                <ScalarProperty Name="cod_visita" ColumnName="cod_visita" />
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+                <ScalarProperty Name="fec_visita" ColumnName="fec_visita" />
+                <ScalarProperty Name="motivo_visita" ColumnName="motivo_visita" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarVisitante" FunctionName="PrisionModel.Store.usp_ConsultarVisitante">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarVisitante_Result">
+                <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+                <ScalarProperty Name="nom_visitante" ColumnName="nom_visitante" />
+                <ScalarProperty Name="ape_visitante" ColumnName="ape_visitante" />
+                <ScalarProperty Name="dni_visitante" ColumnName="dni_visitante" />
+                <ScalarProperty Name="dis_visitante" ColumnName="dis_visitante" />
+                <ScalarProperty Name="dir_visitante" ColumnName="dir_visitante" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarVisitantePorDNI" FunctionName="PrisionModel.Store.usp_ConsultarVisitantePorDNI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarVisitantePorDNI_Result">
+                <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+                <ScalarProperty Name="nom_visitante" ColumnName="nom_visitante" />
+                <ScalarProperty Name="ape_visitante" ColumnName="ape_visitante" />
+                <ScalarProperty Name="dni_visitante" ColumnName="dni_visitante" />
+                <ScalarProperty Name="dis_visitante" ColumnName="dis_visitante" />
+                <ScalarProperty Name="dir_visitante" ColumnName="dir_visitante" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_EliminarPreso" FunctionName="PrisionModel.Store.usp_EliminarPreso" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarVisita" FunctionName="PrisionModel.Store.usp_EliminarVisita" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarDetalle" FunctionName="PrisionModel.Store.usp_InsertarDetalle" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarIngreso" FunctionName="PrisionModel.Store.usp_InsertarIngreso" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarInscripcion" FunctionName="PrisionModel.Store.usp_InsertarInscripcion" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarPreso" FunctionName="PrisionModel.Store.usp_InsertarPreso" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarVisita" FunctionName="PrisionModel.Store.usp_InsertarVisita" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarVisitante" FunctionName="PrisionModel.Store.usp_InsertarVisitante" />
+          <FunctionImportMapping FunctionImportName="usp_ListarDelito" FunctionName="PrisionModel.Store.usp_ListarDelito">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ListarDelito_Result">
+                <ScalarProperty Name="cod_delito" ColumnName="cod_delito" />
+                <ScalarProperty Name="des_delito" ColumnName="des_delito" />
+                <ScalarProperty Name="penaMax_delito" ColumnName="penaMax_delito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarDistrito" FunctionName="PrisionModel.Store.usp_ListarDistrito">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ListarDistrito_Result">
+                <ScalarProperty Name="cod_distrito" ColumnName="cod_distrito" />
+                <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarIngresoNombres" FunctionName="PrisionModel.Store.usp_ListarIngresoNombres">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ListarIngresoNombres_Result">
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+                <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+                <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+                <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+                <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+                <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+                <ScalarProperty Name="fec_salida" ColumnName="fec_salida" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPreso" FunctionName="PrisionModel.Store.usp_ListarPreso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ListarPreso_Result">
+                <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+                <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+                <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+                <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+                <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+                <ScalarProperty Name="dis_preso" ColumnName="dis_preso" />
+                <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPrograma" FunctionName="PrisionModel.Store.usp_ListarPrograma">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ListarPrograma_Result">
+                <ScalarProperty Name="cod_programa" ColumnName="cod_programa" />
+                <ScalarProperty Name="nom_programa" ColumnName="nom_programa" />
+                <ScalarProperty Name="des_programa" ColumnName="des_programa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarVisita" FunctionName="PrisionModel.Store.usp_ListarVisita">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ListarVisita_Result">
+                <ScalarProperty Name="cod_visita" ColumnName="cod_visita" />
+                <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+                <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+                <ScalarProperty Name="fec_visita" ColumnName="fec_visita" />
+                <ScalarProperty Name="motivo_visita" ColumnName="motivo_visita" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarVisitante" FunctionName="PrisionModel.Store.usp_ListarVisitante">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisionModel.usp_ListarVisitante_Result">
+                <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+                <ScalarProperty Name="nom_visitante" ColumnName="nom_visitante" />
+                <ScalarProperty Name="ape_visitante" ColumnName="ape_visitante" />
+                <ScalarProperty Name="dni_visitante" ColumnName="dni_visitante" />
+                <ScalarProperty Name="dis_visitante" ColumnName="dis_visitante" />
+                <ScalarProperty Name="dir_visitante" ColumnName="dir_visitante" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

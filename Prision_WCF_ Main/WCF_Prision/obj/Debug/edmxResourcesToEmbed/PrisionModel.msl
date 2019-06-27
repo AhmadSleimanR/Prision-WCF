@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrisionModelStoreContainer" CdmEntityContainer="PrisionEntities">
+    <EntitySetMapping Name="tb_celda">
+      <EntityTypeMapping TypeName="PrisionModel.tb_celda">
+        <MappingFragment StoreEntitySet="tb_celda">
+          <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+          <ScalarProperty Name="capacidad_celda" ColumnName="capacidad_celda" />
+          <ScalarProperty Name="actual_celda" ColumnName="actual_celda" />
+          <ScalarProperty Name="cod_pabellon" ColumnName="cod_pabellon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_delito">
+      <EntityTypeMapping TypeName="PrisionModel.tb_delito">
+        <MappingFragment StoreEntitySet="tb_delito">
+          <ScalarProperty Name="cod_delito" ColumnName="cod_delito" />
+          <ScalarProperty Name="des_delito" ColumnName="des_delito" />
+          <ScalarProperty Name="penaMax_delito" ColumnName="penaMax_delito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_detalle_ingreso">
+      <EntityTypeMapping TypeName="PrisionModel.tb_detalle_ingreso">
+        <MappingFragment StoreEntitySet="tb_detalle_ingreso">
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="cod_delito" ColumnName="cod_delito" />
+          <ScalarProperty Name="participacion" ColumnName="participacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_distrito">
+      <EntityTypeMapping TypeName="PrisionModel.tb_distrito">
+        <MappingFragment StoreEntitySet="tb_distrito">
+          <ScalarProperty Name="cod_distrito" ColumnName="cod_distrito" />
+          <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_ingreso">
+      <EntityTypeMapping TypeName="PrisionModel.tb_ingreso">
+        <MappingFragment StoreEntitySet="tb_ingreso">
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+          <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+          <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+          <ScalarProperty Name="fec_salida" ColumnName="fec_salida" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_inscripcion">
+      <EntityTypeMapping TypeName="PrisionModel.tb_inscripcion">
+        <MappingFragment StoreEntitySet="tb_inscripcion">
+          <ScalarProperty Name="cod_inscripcion" ColumnName="cod_inscripcion" />
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="cod_programa" ColumnName="cod_programa" />
+          <ScalarProperty Name="fecha_ini" ColumnName="fecha_ini" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_pabellon">
+      <EntityTypeMapping TypeName="PrisionModel.tb_pabellon">
+        <MappingFragment StoreEntitySet="tb_pabellon">
+          <ScalarProperty Name="cod_pabellon" ColumnName="cod_pabellon" />
+          <ScalarProperty Name="nom_pabellon" ColumnName="nom_pabellon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_preso">
+      <EntityTypeMapping TypeName="PrisionModel.tb_preso">
+        <MappingFragment StoreEntitySet="tb_preso">
+          <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+          <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+          <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+          <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+          <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+          <ScalarProperty Name="dis_preso" ColumnName="dis_preso" />
+          <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_programa">
+      <EntityTypeMapping TypeName="PrisionModel.tb_programa">
+        <MappingFragment StoreEntitySet="tb_programa">
+          <ScalarProperty Name="cod_programa" ColumnName="cod_programa" />
+          <ScalarProperty Name="nom_programa" ColumnName="nom_programa" />
+          <ScalarProperty Name="des_programa" ColumnName="des_programa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_visita">
+      <EntityTypeMapping TypeName="PrisionModel.tb_visita">
+        <MappingFragment StoreEntitySet="tb_visita">
+          <ScalarProperty Name="cod_visita" ColumnName="cod_visita" />
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+          <ScalarProperty Name="fec_visita" ColumnName="fec_visita" />
+          <ScalarProperty Name="motivo_visita" ColumnName="motivo_visita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_visitante">
+      <EntityTypeMapping TypeName="PrisionModel.tb_visitante">
+        <MappingFragment StoreEntitySet="tb_visitante">
+          <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+          <ScalarProperty Name="nom_visitante" ColumnName="nom_visitante" />
+          <ScalarProperty Name="ape_visitante" ColumnName="ape_visitante" />
+          <ScalarProperty Name="dni_visitante" ColumnName="dni_visitante" />
+          <ScalarProperty Name="dis_visitante" ColumnName="dis_visitante" />
+          <ScalarProperty Name="dir_visitante" ColumnName="dir_visitante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwDelitosIngreso">
+      <EntityTypeMapping TypeName="PrisionModel.vwDelitosIngreso">
+        <MappingFragment StoreEntitySet="vwDelitosIngreso">
+          <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+          <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+          <ScalarProperty Name="participacion" ColumnName="participacion" />
+          <ScalarProperty Name="des_delito" ColumnName="des_delito" />
+          <ScalarProperty Name="cod_delito" ColumnName="cod_delito" />
+          <ScalarProperty Name="penaMax_delito" ColumnName="penaMax_delito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwIngresosPreso">
+      <EntityTypeMapping TypeName="PrisionModel.vwIngresosPreso">
+        <MappingFragment StoreEntitySet="vwIngresosPreso">
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+          <ScalarProperty Name="fec_salida" ColumnName="fec_salida" />
+          <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+          <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+          <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+          <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+          <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+          <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+          <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwProgramasIngreso">
+      <EntityTypeMapping TypeName="PrisionModel.vwProgramasIngreso">
+        <MappingFragment StoreEntitySet="vwProgramasIngreso">
+          <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+          <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+          <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+          <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+          <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+          <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+          <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+          <ScalarProperty Name="fec_salida" ColumnName="fec_salida" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_ini" ColumnName="fecha_ini" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="nom_programa" ColumnName="nom_programa" />
+          <ScalarProperty Name="des_programa" ColumnName="des_programa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwVisitasIngreso">
+      <EntityTypeMapping TypeName="PrisionModel.vwVisitasIngreso">
+        <MappingFragment StoreEntitySet="vwVisitasIngreso">
+          <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+          <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+          <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+          <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="fec_visita" ColumnName="fec_visita" />
+          <ScalarProperty Name="motivo_visita" ColumnName="motivo_visita" />
+          <ScalarProperty Name="nom_visitante" ColumnName="nom_visitante" />
+          <ScalarProperty Name="dni_visitante" ColumnName="dni_visitante" />
+          <ScalarProperty Name="ape_visitante" ColumnName="ape_visitante" />
+          <ScalarProperty Name="dis_visitante" ColumnName="dis_visitante" />
+          <ScalarProperty Name="dir_visitante" ColumnName="dir_visitante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_ActualizarIngreso" FunctionName="PrisionModel.Store.usp_ActualizarIngreso" />
+    <FunctionImportMapping FunctionImportName="usp_ActualizarInscripcion" FunctionName="PrisionModel.Store.usp_ActualizarInscripcion" />
+    <FunctionImportMapping FunctionImportName="usp_ActualizarPreso" FunctionName="PrisionModel.Store.usp_ActualizarPreso" />
+    <FunctionImportMapping FunctionImportName="usp_ActualizarVisita" FunctionName="PrisionModel.Store.usp_ActualizarVisita" />
+    <FunctionImportMapping FunctionImportName="usp_ConsultarDelito" FunctionName="PrisionModel.Store.usp_ConsultarDelito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarDelito_Result">
+          <ScalarProperty Name="cod_delito" ColumnName="cod_delito" />
+          <ScalarProperty Name="des_delito" ColumnName="des_delito" />
+          <ScalarProperty Name="penaMax_delito" ColumnName="penaMax_delito" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ConsultarIngreso" FunctionName="PrisionModel.Store.usp_ConsultarIngreso">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarIngreso_Result">
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+          <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+          <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+          <ScalarProperty Name="fec_salida" ColumnName="fec_salida" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ConsultarInscripcion" FunctionName="PrisionModel.Store.usp_ConsultarInscripcion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarInscripcion_Result">
+          <ScalarProperty Name="cod_inscripcion" ColumnName="cod_inscripcion" />
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="cod_programa" ColumnName="cod_programa" />
+          <ScalarProperty Name="fecha_ini" ColumnName="fecha_ini" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ConsultarPreso" FunctionName="PrisionModel.Store.usp_ConsultarPreso">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarPreso_Result">
+          <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+          <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+          <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+          <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+          <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+          <ScalarProperty Name="dis_preso" ColumnName="dis_preso" />
+          <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ConsultarPresoPorDNI" FunctionName="PrisionModel.Store.usp_ConsultarPresoPorDNI">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarPresoPorDNI_Result">
+          <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+          <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+          <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+          <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+          <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+          <ScalarProperty Name="dis_preso" ColumnName="dis_preso" />
+          <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ConsultarPrograma" FunctionName="PrisionModel.Store.usp_ConsultarPrograma">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarPrograma_Result">
+          <ScalarProperty Name="cod_programa" ColumnName="cod_programa" />
+          <ScalarProperty Name="nom_programa" ColumnName="nom_programa" />
+          <ScalarProperty Name="des_programa" ColumnName="des_programa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ConsultarVisita" FunctionName="PrisionModel.Store.usp_ConsultarVisita">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarVisita_Result">
+          <ScalarProperty Name="cod_visita" ColumnName="cod_visita" />
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+          <ScalarProperty Name="fec_visita" ColumnName="fec_visita" />
+          <ScalarProperty Name="motivo_visita" ColumnName="motivo_visita" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ConsultarVisitante" FunctionName="PrisionModel.Store.usp_ConsultarVisitante">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarVisitante_Result">
+          <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+          <ScalarProperty Name="nom_visitante" ColumnName="nom_visitante" />
+          <ScalarProperty Name="ape_visitante" ColumnName="ape_visitante" />
+          <ScalarProperty Name="dni_visitante" ColumnName="dni_visitante" />
+          <ScalarProperty Name="dis_visitante" ColumnName="dis_visitante" />
+          <ScalarProperty Name="dir_visitante" ColumnName="dir_visitante" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ConsultarVisitantePorDNI" FunctionName="PrisionModel.Store.usp_ConsultarVisitantePorDNI">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ConsultarVisitantePorDNI_Result">
+          <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+          <ScalarProperty Name="nom_visitante" ColumnName="nom_visitante" />
+          <ScalarProperty Name="ape_visitante" ColumnName="ape_visitante" />
+          <ScalarProperty Name="dni_visitante" ColumnName="dni_visitante" />
+          <ScalarProperty Name="dis_visitante" ColumnName="dis_visitante" />
+          <ScalarProperty Name="dir_visitante" ColumnName="dir_visitante" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_EliminarPreso" FunctionName="PrisionModel.Store.usp_EliminarPreso" />
+    <FunctionImportMapping FunctionImportName="usp_EliminarVisita" FunctionName="PrisionModel.Store.usp_EliminarVisita" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarDetalle" FunctionName="PrisionModel.Store.usp_InsertarDetalle" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarIngreso" FunctionName="PrisionModel.Store.usp_InsertarIngreso" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarInscripcion" FunctionName="PrisionModel.Store.usp_InsertarInscripcion" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarPreso" FunctionName="PrisionModel.Store.usp_InsertarPreso" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarVisita" FunctionName="PrisionModel.Store.usp_InsertarVisita" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarVisitante" FunctionName="PrisionModel.Store.usp_InsertarVisitante" />
+    <FunctionImportMapping FunctionImportName="usp_ListarDelito" FunctionName="PrisionModel.Store.usp_ListarDelito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ListarDelito_Result">
+          <ScalarProperty Name="cod_delito" ColumnName="cod_delito" />
+          <ScalarProperty Name="des_delito" ColumnName="des_delito" />
+          <ScalarProperty Name="penaMax_delito" ColumnName="penaMax_delito" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarDistrito" FunctionName="PrisionModel.Store.usp_ListarDistrito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ListarDistrito_Result">
+          <ScalarProperty Name="cod_distrito" ColumnName="cod_distrito" />
+          <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarIngresoNombres" FunctionName="PrisionModel.Store.usp_ListarIngresoNombres">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ListarIngresoNombres_Result">
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+          <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+          <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+          <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+          <ScalarProperty Name="cod_celda" ColumnName="cod_celda" />
+          <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+          <ScalarProperty Name="fec_salida" ColumnName="fec_salida" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarPreso" FunctionName="PrisionModel.Store.usp_ListarPreso">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ListarPreso_Result">
+          <ScalarProperty Name="cod_preso" ColumnName="cod_preso" />
+          <ScalarProperty Name="nom_preso" ColumnName="nom_preso" />
+          <ScalarProperty Name="ape_preso" ColumnName="ape_preso" />
+          <ScalarProperty Name="dni_preso" ColumnName="dni_preso" />
+          <ScalarProperty Name="fecNac_preso" ColumnName="fecNac_preso" />
+          <ScalarProperty Name="dis_preso" ColumnName="dis_preso" />
+          <ScalarProperty Name="dir_preso" ColumnName="dir_preso" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarPrograma" FunctionName="PrisionModel.Store.usp_ListarPrograma">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ListarPrograma_Result">
+          <ScalarProperty Name="cod_programa" ColumnName="cod_programa" />
+          <ScalarProperty Name="nom_programa" ColumnName="nom_programa" />
+          <ScalarProperty Name="des_programa" ColumnName="des_programa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarVisita" FunctionName="PrisionModel.Store.usp_ListarVisita">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ListarVisita_Result">
+          <ScalarProperty Name="cod_visita" ColumnName="cod_visita" />
+          <ScalarProperty Name="cod_ingreso" ColumnName="cod_ingreso" />
+          <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+          <ScalarProperty Name="fec_visita" ColumnName="fec_visita" />
+          <ScalarProperty Name="motivo_visita" ColumnName="motivo_visita" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarVisitante" FunctionName="PrisionModel.Store.usp_ListarVisitante">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrisionModel.usp_ListarVisitante_Result">
+          <ScalarProperty Name="cod_visitante" ColumnName="cod_visitante" />
+          <ScalarProperty Name="nom_visitante" ColumnName="nom_visitante" />
+          <ScalarProperty Name="ape_visitante" ColumnName="ape_visitante" />
+          <ScalarProperty Name="dni_visitante" ColumnName="dni_visitante" />
+          <ScalarProperty Name="dis_visitante" ColumnName="dis_visitante" />
+          <ScalarProperty Name="dir_visitante" ColumnName="dir_visitante" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

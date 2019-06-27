@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrisionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tb_celda">
+    <Key>
+      <PropertyRef Name="cod_celda" />
+    </Key>
+    <Property Name="cod_celda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="capacidad_celda" Type="int" Nullable="false" />
+    <Property Name="actual_celda" Type="int" Nullable="false" />
+    <Property Name="cod_pabellon" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_delito">
+    <Key>
+      <PropertyRef Name="cod_delito" />
+    </Key>
+    <Property Name="cod_delito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="des_delito" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="penaMax_delito" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_detalle_ingreso">
+    <Key>
+      <PropertyRef Name="cod_ingreso" />
+      <PropertyRef Name="cod_delito" />
+    </Key>
+    <Property Name="cod_ingreso" Type="int" Nullable="false" />
+    <Property Name="cod_delito" Type="int" Nullable="false" />
+    <Property Name="participacion" Type="varchar" MaxLength="9" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_distrito">
+    <Key>
+      <PropertyRef Name="cod_distrito" />
+    </Key>
+    <Property Name="cod_distrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_distrito" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_ingreso">
+    <Key>
+      <PropertyRef Name="cod_ingreso" />
+    </Key>
+    <Property Name="cod_ingreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cod_preso" Type="int" Nullable="false" />
+    <Property Name="cod_celda" Type="int" Nullable="false" />
+    <Property Name="fec_ingreso" Type="date" Nullable="false" />
+    <Property Name="fec_salida" Type="date" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="8" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_inscripcion">
+    <Key>
+      <PropertyRef Name="cod_inscripcion" />
+    </Key>
+    <Property Name="cod_inscripcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cod_ingreso" Type="int" Nullable="false" />
+    <Property Name="cod_programa" Type="int" Nullable="false" />
+    <Property Name="fecha_ini" Type="date" Nullable="false" />
+    <Property Name="fecha_fin" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_pabellon">
+    <Key>
+      <PropertyRef Name="cod_pabellon" />
+    </Key>
+    <Property Name="cod_pabellon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_pabellon" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_preso">
+    <Key>
+      <PropertyRef Name="cod_preso" />
+    </Key>
+    <Property Name="cod_preso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_preso" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ape_preso" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="dni_preso" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="fecNac_preso" Type="date" Nullable="false" />
+    <Property Name="dis_preso" Type="int" Nullable="false" />
+    <Property Name="dir_preso" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_programa">
+    <Key>
+      <PropertyRef Name="cod_programa" />
+    </Key>
+    <Property Name="cod_programa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_programa" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="des_programa" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_visita">
+    <Key>
+      <PropertyRef Name="cod_visita" />
+    </Key>
+    <Property Name="cod_visita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cod_ingreso" Type="int" Nullable="false" />
+    <Property Name="cod_visitante" Type="int" Nullable="false" />
+    <Property Name="fec_visita" Type="date" Nullable="false" />
+    <Property Name="motivo_visita" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_visitante">
+    <Key>
+      <PropertyRef Name="cod_visitante" />
+    </Key>
+    <Property Name="cod_visitante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_visitante" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ape_visitante" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="dni_visitante" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="dis_visitante" Type="int" Nullable="false" />
+    <Property Name="dir_visitante" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Prision.dbo.vwDelitosIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwDelitosIngreso">
+    <Key>
+      <PropertyRef Name="nom_preso" />
+      <PropertyRef Name="dni_preso" />
+      <PropertyRef Name="cod_ingreso" />
+      <PropertyRef Name="fec_ingreso" />
+      <PropertyRef Name="participacion" />
+      <PropertyRef Name="des_delito" />
+      <PropertyRef Name="cod_delito" />
+      <PropertyRef Name="penaMax_delito" />
+    </Key>
+    <Property Name="nom_preso" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="dni_preso" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="cod_ingreso" Type="int" Nullable="false" />
+    <Property Name="fec_ingreso" Type="date" Nullable="false" />
+    <Property Name="participacion" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="des_delito" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cod_delito" Type="int" Nullable="false" />
+    <Property Name="penaMax_delito" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Prision.dbo.vwIngresosPreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwIngresosPreso">
+    <Key>
+      <PropertyRef Name="cod_ingreso" />
+      <PropertyRef Name="fec_ingreso" />
+      <PropertyRef Name="fec_salida" />
+      <PropertyRef Name="cod_celda" />
+      <PropertyRef Name="estado" />
+      <PropertyRef Name="cod_preso" />
+      <PropertyRef Name="dni_preso" />
+      <PropertyRef Name="nom_preso" />
+      <PropertyRef Name="ape_preso" />
+      <PropertyRef Name="dir_preso" />
+      <PropertyRef Name="fecNac_preso" />
+      <PropertyRef Name="nom_distrito" />
+    </Key>
+    <Property Name="cod_ingreso" Type="int" Nullable="false" />
+    <Property Name="fec_ingreso" Type="date" Nullable="false" />
+    <Property Name="fec_salida" Type="date" Nullable="false" />
+    <Property Name="cod_celda" Type="int" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="cod_preso" Type="int" Nullable="false" />
+    <Property Name="dni_preso" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="nom_preso" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ape_preso" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="dir_preso" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecNac_preso" Type="date" Nullable="false" />
+    <Property Name="nom_distrito" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Prision.dbo.vwProgramasIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwProgramasIngreso">
+    <Key>
+      <PropertyRef Name="nom_distrito" />
+      <PropertyRef Name="nom_preso" />
+      <PropertyRef Name="ape_preso" />
+      <PropertyRef Name="dni_preso" />
+      <PropertyRef Name="fecNac_preso" />
+      <PropertyRef Name="dir_preso" />
+      <PropertyRef Name="cod_ingreso" />
+      <PropertyRef Name="cod_celda" />
+      <PropertyRef Name="fec_ingreso" />
+      <PropertyRef Name="fec_salida" />
+      <PropertyRef Name="estado" />
+      <PropertyRef Name="fecha_ini" />
+      <PropertyRef Name="fecha_fin" />
+      <PropertyRef Name="nom_programa" />
+      <PropertyRef Name="des_programa" />
+    </Key>
+    <Property Name="nom_distrito" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="nom_preso" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ape_preso" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="dni_preso" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="fecNac_preso" Type="date" Nullable="false" />
+    <Property Name="dir_preso" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cod_ingreso" Type="int" Nullable="false" />
+    <Property Name="cod_celda" Type="int" Nullable="false" />
+    <Property Name="fec_ingreso" Type="date" Nullable="false" />
+    <Property Name="fec_salida" Type="date" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="fecha_ini" Type="date" Nullable="false" />
+    <Property Name="fecha_fin" Type="date" Nullable="false" />
+    <Property Name="nom_programa" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="des_programa" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Prision.dbo.vwVisitasIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwVisitasIngreso">
+    <Key>
+      <PropertyRef Name="nom_distrito" />
+      <PropertyRef Name="nom_preso" />
+      <PropertyRef Name="ape_preso" />
+      <PropertyRef Name="dni_preso" />
+      <PropertyRef Name="cod_ingreso" />
+      <PropertyRef Name="fec_visita" />
+      <PropertyRef Name="motivo_visita" />
+      <PropertyRef Name="nom_visitante" />
+      <PropertyRef Name="dni_visitante" />
+      <PropertyRef Name="ape_visitante" />
+      <PropertyRef Name="dis_visitante" />
+      <PropertyRef Name="dir_visitante" />
+    </Key>
+    <Property Name="nom_distrito" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="nom_preso" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ape_preso" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="dni_preso" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="cod_ingreso" Type="int" Nullable="false" />
+    <Property Name="fec_visita" Type="date" Nullable="false" />
+    <Property Name="motivo_visita" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="nom_visitante" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="dni_visitante" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="ape_visitante" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="dis_visitante" Type="int" Nullable="false" />
+    <Property Name="dir_visitante" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tb_celda__cod_pa__1FCDBCEB">
+    <End Role="tb_pabellon" Type="Self.tb_pabellon" Multiplicity="1" />
+    <End Role="tb_celda" Type="Self.tb_celda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_pabellon">
+        <PropertyRef Name="cod_pabellon" />
+      </Principal>
+      <Dependent Role="tb_celda">
+        <PropertyRef Name="cod_pabellon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_detall__cod_d__2D27B809">
+    <End Role="tb_delito" Type="Self.tb_delito" Multiplicity="1" />
+    <End Role="tb_detalle_ingreso" Type="Self.tb_detalle_ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_delito">
+        <PropertyRef Name="cod_delito" />
+      </Principal>
+      <Dependent Role="tb_detalle_ingreso">
+        <PropertyRef Name="cod_delito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_detall__cod_i__2C3393D0">
+    <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="1" />
+    <End Role="tb_detalle_ingreso" Type="Self.tb_detalle_ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_ingreso">
+        <PropertyRef Name="cod_ingreso" />
+      </Principal>
+      <Dependent Role="tb_detalle_ingreso">
+        <PropertyRef Name="cod_ingreso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_ingres__cod_c__24927208">
+    <End Role="tb_celda" Type="Self.tb_celda" Multiplicity="1" />
+    <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_celda">
+        <PropertyRef Name="cod_celda" />
+      </Principal>
+      <Dependent Role="tb_ingreso">
+        <PropertyRef Name="cod_celda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_ingres__cod_p__239E4DCF">
+    <End Role="tb_preso" Type="Self.tb_preso" Multiplicity="1" />
+    <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_preso">
+        <PropertyRef Name="cod_preso" />
+      </Principal>
+      <Dependent Role="tb_ingreso">
+        <PropertyRef Name="cod_preso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_inscri__cod_i__31EC6D26">
+    <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="1" />
+    <End Role="tb_inscripcion" Type="Self.tb_inscripcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_ingreso">
+        <PropertyRef Name="cod_ingreso" />
+      </Principal>
+      <Dependent Role="tb_inscripcion">
+        <PropertyRef Name="cod_ingreso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_inscri__cod_p__32E0915F">
+    <End Role="tb_programa" Type="Self.tb_programa" Multiplicity="1" />
+    <End Role="tb_inscripcion" Type="Self.tb_inscripcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_programa">
+        <PropertyRef Name="cod_programa" />
+      </Principal>
+      <Dependent Role="tb_inscripcion">
+        <PropertyRef Name="cod_programa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_preso__dis_pr__145C0A3F">
+    <End Role="tb_distrito" Type="Self.tb_distrito" Multiplicity="1" />
+    <End Role="tb_preso" Type="Self.tb_preso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_distrito">
+        <PropertyRef Name="cod_distrito" />
+      </Principal>
+      <Dependent Role="tb_preso">
+        <PropertyRef Name="dis_preso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_visita__cod_i__286302EC">
+    <End Role="tb_ingreso" Type="Self.tb_ingreso" Multiplicity="1" />
+    <End Role="tb_visita" Type="Self.tb_visita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_ingreso">
+        <PropertyRef Name="cod_ingreso" />
+      </Principal>
+      <Dependent Role="tb_visita">
+        <PropertyRef Name="cod_ingreso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_visita__cod_v__29572725">
+    <End Role="tb_visitante" Type="Self.tb_visitante" Multiplicity="1" />
+    <End Role="tb_visita" Type="Self.tb_visita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_visitante">
+        <PropertyRef Name="cod_visitante" />
+      </Principal>
+      <Dependent Role="tb_visita">
+        <PropertyRef Name="cod_visitante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_visita__dis_v__1920BF5C">
+    <End Role="tb_distrito" Type="Self.tb_distrito" Multiplicity="1" />
+    <End Role="tb_visitante" Type="Self.tb_visitante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_distrito">
+        <PropertyRef Name="cod_distrito" />
+      </Principal>
+      <Dependent Role="tb_visitante">
+        <PropertyRef Name="dis_visitante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="usp_ActualizarIngreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codIngreso" Type="int" Mode="In" />
+    <Parameter Name="codPreso" Type="int" Mode="In" />
+    <Parameter Name="codCelda" Type="int" Mode="In" />
+    <Parameter Name="fec_ingreso" Type="date" Mode="In" />
+    <Parameter Name="fecSalida" Type="date" Mode="In" />
+  </Function>
+  <Function Name="usp_ActualizarInscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcodIns" Type="int" Mode="In" />
+    <Parameter Name="vcodIng" Type="int" Mode="In" />
+    <Parameter Name="vcodPro" Type="int" Mode="In" />
+    <Parameter Name="vfecIni" Type="date" Mode="In" />
+    <Parameter Name="vfecFini" Type="date" Mode="In" />
+  </Function>
+  <Function Name="usp_ActualizarPreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod" Type="int" Mode="In" />
+    <Parameter Name="vnom" Type="varchar" Mode="In" />
+    <Parameter Name="vape" Type="varchar" Mode="In" />
+    <Parameter Name="vdni" Type="char" Mode="In" />
+    <Parameter Name="vfec" Type="date" Mode="In" />
+    <Parameter Name="vdis" Type="int" Mode="In" />
+    <Parameter Name="vdir" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_ActualizarVisita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod" Type="int" Mode="In" />
+    <Parameter Name="vcodI" Type="int" Mode="In" />
+    <Parameter Name="vcodV" Type="int" Mode="In" />
+    <Parameter Name="vfec" Type="date" Mode="In" />
+    <Parameter Name="motivo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_ConsultarDelito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_ConsultarIngreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_ConsultarInscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_ConsultarPreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_ConsultarPresoPorDNI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vdni" Type="char" Mode="In" />
+  </Function>
+  <Function Name="usp_ConsultarPrograma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_ConsultarVisita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_ConsultarVisitante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_ConsultarVisitantePorDNI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vdni" Type="char" Mode="In" />
+  </Function>
+  <Function Name="usp_EliminarPreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vdni" Type="char" Mode="In" />
+  </Function>
+  <Function Name="usp_EliminarVisita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertarDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcodI" Type="int" Mode="In" />
+    <Parameter Name="vcodD" Type="int" Mode="In" />
+    <Parameter Name="vpar" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertarIngreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcodP" Type="int" Mode="In" />
+    <Parameter Name="vcodC" Type="int" Mode="In" />
+    <Parameter Name="vfecI" Type="date" Mode="In" />
+    <Parameter Name="vfecS" Type="date" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertarInscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcodIng" Type="int" Mode="In" />
+    <Parameter Name="vcodPro" Type="int" Mode="In" />
+    <Parameter Name="vfecini" Type="date" Mode="In" />
+    <Parameter Name="vfecfin" Type="date" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertarPreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vnom" Type="varchar" Mode="In" />
+    <Parameter Name="vape" Type="varchar" Mode="In" />
+    <Parameter Name="vdni" Type="char" Mode="In" />
+    <Parameter Name="vfec" Type="date" Mode="In" />
+    <Parameter Name="vdis" Type="int" Mode="In" />
+    <Parameter Name="vdir" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertarVisita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcodI" Type="int" Mode="In" />
+    <Parameter Name="vcodV" Type="int" Mode="In" />
+    <Parameter Name="vfec" Type="date" Mode="In" />
+    <Parameter Name="vmo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertarVisitante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vnom" Type="varchar" Mode="In" />
+    <Parameter Name="vape" Type="varchar" Mode="In" />
+    <Parameter Name="vdni" Type="char" Mode="In" />
+    <Parameter Name="vdis" Type="int" Mode="In" />
+    <Parameter Name="vdir" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_ListarDelito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_ListarDistrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_ListarIngresoNombres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_ListarPreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_ListarPrograma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_ListarVisita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_ListarVisitante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="PrisionModelStoreContainer">
+    <EntitySet Name="tb_celda" EntityType="Self.tb_celda" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_delito" EntityType="Self.tb_delito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_detalle_ingreso" EntityType="Self.tb_detalle_ingreso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_distrito" EntityType="Self.tb_distrito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_ingreso" EntityType="Self.tb_ingreso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_inscripcion" EntityType="Self.tb_inscripcion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_pabellon" EntityType="Self.tb_pabellon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_preso" EntityType="Self.tb_preso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_programa" EntityType="Self.tb_programa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_visita" EntityType="Self.tb_visita" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_visitante" EntityType="Self.tb_visitante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vwDelitosIngreso" EntityType="Self.vwDelitosIngreso" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwDelitosIngreso].[nom_preso] AS [nom_preso], 
+    [vwDelitosIngreso].[dni_preso] AS [dni_preso], 
+    [vwDelitosIngreso].[cod_ingreso] AS [cod_ingreso], 
+    [vwDelitosIngreso].[fec_ingreso] AS [fec_ingreso], 
+    [vwDelitosIngreso].[participacion] AS [participacion], 
+    [vwDelitosIngreso].[des_delito] AS [des_delito], 
+    [vwDelitosIngreso].[cod_delito] AS [cod_delito], 
+    [vwDelitosIngreso].[penaMax_delito] AS [penaMax_delito]
+    FROM [dbo].[vwDelitosIngreso] AS [vwDelitosIngreso]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwIngresosPreso" EntityType="Self.vwIngresosPreso" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwIngresosPreso].[cod_ingreso] AS [cod_ingreso], 
+    [vwIngresosPreso].[fec_ingreso] AS [fec_ingreso], 
+    [vwIngresosPreso].[fec_salida] AS [fec_salida], 
+    [vwIngresosPreso].[cod_celda] AS [cod_celda], 
+    [vwIngresosPreso].[estado] AS [estado], 
+    [vwIngresosPreso].[cod_preso] AS [cod_preso], 
+    [vwIngresosPreso].[dni_preso] AS [dni_preso], 
+    [vwIngresosPreso].[nom_preso] AS [nom_preso], 
+    [vwIngresosPreso].[ape_preso] AS [ape_preso], 
+    [vwIngresosPreso].[dir_preso] AS [dir_preso], 
+    [vwIngresosPreso].[fecNac_preso] AS [fecNac_preso], 
+    [vwIngresosPreso].[nom_distrito] AS [nom_distrito]
+    FROM [dbo].[vwIngresosPreso] AS [vwIngresosPreso]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwProgramasIngreso" EntityType="Self.vwProgramasIngreso" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwProgramasIngreso].[nom_distrito] AS [nom_distrito], 
+    [vwProgramasIngreso].[nom_preso] AS [nom_preso], 
+    [vwProgramasIngreso].[ape_preso] AS [ape_preso], 
+    [vwProgramasIngreso].[dni_preso] AS [dni_preso], 
+    [vwProgramasIngreso].[fecNac_preso] AS [fecNac_preso], 
+    [vwProgramasIngreso].[dir_preso] AS [dir_preso], 
+    [vwProgramasIngreso].[cod_ingreso] AS [cod_ingreso], 
+    [vwProgramasIngreso].[cod_celda] AS [cod_celda], 
+    [vwProgramasIngreso].[fec_ingreso] AS [fec_ingreso], 
+    [vwProgramasIngreso].[fec_salida] AS [fec_salida], 
+    [vwProgramasIngreso].[estado] AS [estado], 
+    [vwProgramasIngreso].[fecha_ini] AS [fecha_ini], 
+    [vwProgramasIngreso].[fecha_fin] AS [fecha_fin], 
+    [vwProgramasIngreso].[nom_programa] AS [nom_programa], 
+    [vwProgramasIngreso].[des_programa] AS [des_programa]
+    FROM [dbo].[vwProgramasIngreso] AS [vwProgramasIngreso]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwVisitasIngreso" EntityType="Self.vwVisitasIngreso" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwVisitasIngreso].[nom_distrito] AS [nom_distrito], 
+    [vwVisitasIngreso].[nom_preso] AS [nom_preso], 
+    [vwVisitasIngreso].[ape_preso] AS [ape_preso], 
+    [vwVisitasIngreso].[dni_preso] AS [dni_preso], 
+    [vwVisitasIngreso].[cod_ingreso] AS [cod_ingreso], 
+    [vwVisitasIngreso].[fec_visita] AS [fec_visita], 
+    [vwVisitasIngreso].[motivo_visita] AS [motivo_visita], 
+    [vwVisitasIngreso].[nom_visitante] AS [nom_visitante], 
+    [vwVisitasIngreso].[dni_visitante] AS [dni_visitante], 
+    [vwVisitasIngreso].[ape_visitante] AS [ape_visitante], 
+    [vwVisitasIngreso].[dis_visitante] AS [dis_visitante], 
+    [vwVisitasIngreso].[dir_visitante] AS [dir_visitante]
+    FROM [dbo].[vwVisitasIngreso] AS [vwVisitasIngreso]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__tb_celda__cod_pa__1FCDBCEB" Association="Self.FK__tb_celda__cod_pa__1FCDBCEB">
+      <End Role="tb_pabellon" EntitySet="tb_pabellon" />
+      <End Role="tb_celda" EntitySet="tb_celda" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_detall__cod_d__2D27B809" Association="Self.FK__tb_detall__cod_d__2D27B809">
+      <End Role="tb_delito" EntitySet="tb_delito" />
+      <End Role="tb_detalle_ingreso" EntitySet="tb_detalle_ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_detall__cod_i__2C3393D0" Association="Self.FK__tb_detall__cod_i__2C3393D0">
+      <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+      <End Role="tb_detalle_ingreso" EntitySet="tb_detalle_ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_ingres__cod_c__24927208" Association="Self.FK__tb_ingres__cod_c__24927208">
+      <End Role="tb_celda" EntitySet="tb_celda" />
+      <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_ingres__cod_p__239E4DCF" Association="Self.FK__tb_ingres__cod_p__239E4DCF">
+      <End Role="tb_preso" EntitySet="tb_preso" />
+      <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_inscri__cod_i__31EC6D26" Association="Self.FK__tb_inscri__cod_i__31EC6D26">
+      <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+      <End Role="tb_inscripcion" EntitySet="tb_inscripcion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_inscri__cod_p__32E0915F" Association="Self.FK__tb_inscri__cod_p__32E0915F">
+      <End Role="tb_programa" EntitySet="tb_programa" />
+      <End Role="tb_inscripcion" EntitySet="tb_inscripcion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_preso__dis_pr__145C0A3F" Association="Self.FK__tb_preso__dis_pr__145C0A3F">
+      <End Role="tb_distrito" EntitySet="tb_distrito" />
+      <End Role="tb_preso" EntitySet="tb_preso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_visita__cod_i__286302EC" Association="Self.FK__tb_visita__cod_i__286302EC">
+      <End Role="tb_ingreso" EntitySet="tb_ingreso" />
+      <End Role="tb_visita" EntitySet="tb_visita" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_visita__cod_v__29572725" Association="Self.FK__tb_visita__cod_v__29572725">
+      <End Role="tb_visitante" EntitySet="tb_visitante" />
+      <End Role="tb_visita" EntitySet="tb_visita" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_visita__dis_v__1920BF5C" Association="Self.FK__tb_visita__dis_v__1920BF5C">
+      <End Role="tb_distrito" EntitySet="tb_distrito" />
+      <End Role="tb_visitante" EntitySet="tb_visitante" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
