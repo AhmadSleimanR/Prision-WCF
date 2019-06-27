@@ -1,0 +1,4 @@
+E:\TrabajoProgweb2\ConsumirServiciosProyecto\ConsumirServiciosProyecto_BE\bin\Debug\ConsumirServiciosProyecto_BE.dll
+E:\TrabajoProgweb2\ConsumirServiciosProyecto\ConsumirServiciosProyecto_BE\bin\Debug\ConsumirServiciosProyecto_BE.pdb
+E:\TrabajoProgweb2\ConsumirServiciosProyecto\ConsumirServiciosProyecto_BE\obj\Debug\ConsumirServiciosProyecto_BE.dll
+E:\TrabajoProgweb2\ConsumirServiciosProyecto\ConsumirServiciosProyecto_BE\obj\Debug\ConsumirServiciosProyecto_BE.pdb

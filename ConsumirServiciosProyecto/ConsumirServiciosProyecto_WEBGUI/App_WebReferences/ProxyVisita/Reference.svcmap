@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="976449fd-ae0f-4c1c-9ff3-af78673f5e49" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://C205-07REDES/WCFPrision/WCF_Prision.ServicioVisita.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WCF_Prision3.xsd" MetadataType="Schema" ID="6542c71d-220b-4579-8a53-70a035401535" SourceId="1" SourceUrl="http://c205-07redes/WCFPrision/WCF_Prision.ServicioVisita.svc?xsd=xsd2" />
+    <MetadataFile FileName="WCF_Prision32.xsd" MetadataType="Schema" ID="2e58031b-a43a-4797-b921-3c04651b29fd" SourceId="1" SourceUrl="http://c205-07redes/WCFPrision/WCF_Prision.ServicioVisita.svc?xsd=xsd0" />
+    <MetadataFile FileName="WCF_Prision1.disco" MetadataType="Disco" ID="3378f32d-62b0-4ba8-820a-b201d70a92d7" SourceId="1" SourceUrl="http://c205-07redes/WCFPrision/WCF_Prision.ServicioVisita.svc?disco" />
+    <MetadataFile FileName="WCF_Prision33.xsd" MetadataType="Schema" ID="b99af8b8-9bcb-4fe3-9dcb-b10c3e731fdb" SourceId="1" SourceUrl="http://c205-07redes/WCFPrision/WCF_Prision.ServicioVisita.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServicioVisita1.wsdl" MetadataType="Wsdl" ID="ae1ccef7-3a1b-4ed3-9bca-8ee1f1875cee" SourceId="1" SourceUrl="http://c205-07redes/WCFPrision/WCF_Prision.ServicioVisita.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

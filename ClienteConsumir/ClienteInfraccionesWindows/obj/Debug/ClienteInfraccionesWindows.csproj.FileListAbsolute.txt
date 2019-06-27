@@ -1,0 +1,11 @@
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\bin\Debug\ClienteInfraccionesWindows.exe.config
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\bin\Debug\ClienteInfraccionesWindows.exe
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\bin\Debug\ClienteInfraccionesWindows.pdb
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\bin\Debug\InfraccionesWS.dll
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\bin\Debug\InfraccionesWS.pdb
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\obj\Debug\ClienteInfraccionesWindows.csprojResolveAssemblyReference.cache
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\obj\Debug\ClienteInfraccionesWindows.Form1.resources
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\obj\Debug\ClienteInfraccionesWindows.Properties.Resources.resources
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\obj\Debug\ClienteInfraccionesWindows.csproj.GenerateResource.Cache
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\obj\Debug\ClienteInfraccionesWindows.exe
+C:\ExamenFinal\ClienteConsumir\ClienteInfraccionesWindows\obj\Debug\ClienteInfraccionesWindows.pdb

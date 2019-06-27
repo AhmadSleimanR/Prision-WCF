@@ -1,0 +1,6 @@
+C:\ExamenFinal\ClienteConsumir\InfraccionesWS\bin\Debug\InfraccionesWS.dll.config
+C:\ExamenFinal\ClienteConsumir\InfraccionesWS\bin\Debug\InfraccionesWS.dll
+C:\ExamenFinal\ClienteConsumir\InfraccionesWS\bin\Debug\InfraccionesWS.pdb
+C:\ExamenFinal\ClienteConsumir\InfraccionesWS\obj\Debug\InfraccionesWS.csprojResolveAssemblyReference.cache
+C:\ExamenFinal\ClienteConsumir\InfraccionesWS\obj\Debug\InfraccionesWS.dll
+C:\ExamenFinal\ClienteConsumir\InfraccionesWS\obj\Debug\InfraccionesWS.pdb

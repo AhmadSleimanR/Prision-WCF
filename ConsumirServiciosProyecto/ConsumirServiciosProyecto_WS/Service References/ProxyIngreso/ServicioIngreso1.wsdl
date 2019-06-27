@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioIngreso" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://c205-07redes/WCFPrision/WCF_Prision.ServicioIngreso.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://c205-07redes/WCFPrision/WCF_Prision.ServicioIngreso.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://c205-07redes/WCFPrision/WCF_Prision.ServicioIngreso.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCF_Prision" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioIngreso_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetAllIngreso_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllIngreso" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetAllIngreso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllIngresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetIngresosPreso_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIngresosPreso" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetIngresosPreso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIngresosPresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetIngresoFechas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIngresoFechas" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetIngresoFechas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIngresoFechasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetAllPresoPorSalirFechas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPresoPorSalirFechas" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetAllPresoPorSalirFechas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPresoPorSalirFechasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetAllDelitosDNI_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDelitosDNI" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetAllDelitosDNI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDelitosDNIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetAllDelitosDNIFechas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDelitosDNIFechas" />
+  </wsdl:message>
+  <wsdl:message name="IServicioIngreso_GetAllDelitosDNIFechas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDelitosDNIFechasResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioIngreso">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioIngreso/DoWork" message="tns:IServicioIngreso_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioIngreso/DoWorkResponse" message="tns:IServicioIngreso_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIngreso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioIngreso/GetAllIngreso" message="tns:IServicioIngreso_GetAllIngreso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioIngreso/GetAllIngresoResponse" message="tns:IServicioIngreso_GetAllIngreso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIngresosPreso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioIngreso/GetIngresosPreso" message="tns:IServicioIngreso_GetIngresosPreso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioIngreso/GetIngresosPresoResponse" message="tns:IServicioIngreso_GetIngresosPreso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIngresoFechas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioIngreso/GetIngresoFechas" message="tns:IServicioIngreso_GetIngresoFechas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioIngreso/GetIngresoFechasResponse" message="tns:IServicioIngreso_GetIngresoFechas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPresoPorSalirFechas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioIngreso/GetAllPresoPorSalirFechas" message="tns:IServicioIngreso_GetAllPresoPorSalirFechas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioIngreso/GetAllPresoPorSalirFechasResponse" message="tns:IServicioIngreso_GetAllPresoPorSalirFechas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDelitosDNI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioIngreso/GetAllDelitosDNI" message="tns:IServicioIngreso_GetAllDelitosDNI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioIngreso/GetAllDelitosDNIResponse" message="tns:IServicioIngreso_GetAllDelitosDNI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDelitosDNIFechas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioIngreso/GetAllDelitosDNIFechas" message="tns:IServicioIngreso_GetAllDelitosDNIFechas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioIngreso/GetAllDelitosDNIFechasResponse" message="tns:IServicioIngreso_GetAllDelitosDNIFechas_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioIngreso" type="tns:IServicioIngreso">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/IServicioIngreso/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIngreso">
+      <soap:operation soapAction="http://tempuri.org/IServicioIngreso/GetAllIngreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIngresosPreso">
+      <soap:operation soapAction="http://tempuri.org/IServicioIngreso/GetIngresosPreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIngresoFechas">
+      <soap:operation soapAction="http://tempuri.org/IServicioIngreso/GetIngresoFechas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPresoPorSalirFechas">
+      <soap:operation soapAction="http://tempuri.org/IServicioIngreso/GetAllPresoPorSalirFechas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDelitosDNI">
+      <soap:operation soapAction="http://tempuri.org/IServicioIngreso/GetAllDelitosDNI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDelitosDNIFechas">
+      <soap:operation soapAction="http://tempuri.org/IServicioIngreso/GetAllDelitosDNIFechas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioIngreso">
+    <wsdl:port name="BasicHttpBinding_IServicioIngreso" binding="tns:BasicHttpBinding_IServicioIngreso">
+      <soap:address location="http://c205-07redes/WCFPrision/WCF_Prision.ServicioIngreso.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumirServiciosProyecto_ADO", "ConsumirServiciosProyecto_ADO\ConsumirServiciosProyecto_ADO.csproj", "{B2F16382-F70B-4BDA-8FF4-2168F9245BC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumirServiciosProyecto_BE", "ConsumirServiciosProyecto_BE\ConsumirServiciosProyecto_BE.csproj", "{6202438A-7AAE-4A21-BA9B-8A82AE137FC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumirServiciosProyecto_BL", "ConsumirServiciosProyecto_BL\ConsumirServiciosProyecto_BL.csproj", "{F1689AAB-07F1-4671-94CC-8A4F4F56D7E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumirServiciosProyecto_WS", "ConsumirServiciosProyecto_WS\ConsumirServiciosProyecto_WS.csproj", "{7F14A1DD-DB3E-4FB0-BA4A-7D7332BE7887}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ConsumirServiciosProyecto_WEBGUI(1)", "ConsumirServiciosProyecto_WEBGUI\", "{5EB5D730-CBEF-42A7-A275-63E0535F2290}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_9039"
+		Debug.AspNetCompiler.PhysicalPath = "ConsumirServiciosProyecto_WEBGUI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_9039\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_9039"
+		Release.AspNetCompiler.PhysicalPath = "ConsumirServiciosProyecto_WEBGUI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_9039\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "9039"
+		SlnRelativePath = "ConsumirServiciosProyecto_WEBGUI\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2F16382-F70B-4BDA-8FF4-2168F9245BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2F16382-F70B-4BDA-8FF4-2168F9245BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2F16382-F70B-4BDA-8FF4-2168F9245BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2F16382-F70B-4BDA-8FF4-2168F9245BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6202438A-7AAE-4A21-BA9B-8A82AE137FC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6202438A-7AAE-4A21-BA9B-8A82AE137FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6202438A-7AAE-4A21-BA9B-8A82AE137FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6202438A-7AAE-4A21-BA9B-8A82AE137FC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1689AAB-07F1-4671-94CC-8A4F4F56D7E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1689AAB-07F1-4671-94CC-8A4F4F56D7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1689AAB-07F1-4671-94CC-8A4F4F56D7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1689AAB-07F1-4671-94CC-8A4F4F56D7E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F14A1DD-DB3E-4FB0-BA4A-7D7332BE7887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F14A1DD-DB3E-4FB0-BA4A-7D7332BE7887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F14A1DD-DB3E-4FB0-BA4A-7D7332BE7887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F14A1DD-DB3E-4FB0-BA4A-7D7332BE7887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EB5D730-CBEF-42A7-A275-63E0535F2290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EB5D730-CBEF-42A7-A275-63E0535F2290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EB5D730-CBEF-42A7-A275-63E0535F2290}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EB5D730-CBEF-42A7-A275-63E0535F2290}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

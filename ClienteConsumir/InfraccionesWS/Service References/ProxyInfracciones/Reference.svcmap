@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6d921c52-822d-485c-81bf-ca778011e59e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://C205-06REDES/WCFFinal/WCF_Final.Service1.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WCF_Final.disco" MetadataType="Disco" ID="5e69b691-9d68-4357-aa76-be6db56a1840" SourceId="1" SourceUrl="http://c205-06redes/WCFFinal/WCF_Final.Service1.svc?disco" />
+    <MetadataFile FileName="WCF_Final.xsd" MetadataType="Schema" ID="2f809fcd-7334-4cbc-9d23-43274341bf04" SourceId="1" SourceUrl="http://c205-06redes/WCFFinal/WCF_Final.Service1.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="163bea0b-1691-4d69-95a5-e7057b05cde7" SourceId="1" SourceUrl="http://c205-06redes/WCFFinal/WCF_Final.Service1.svc?wsdl" />
+    <MetadataFile FileName="WCF_Final1.xsd" MetadataType="Schema" ID="b73a516d-f621-46a5-b6a3-8103381d7ebd" SourceId="1" SourceUrl="http://c205-06redes/WCFFinal/WCF_Final.Service1.svc?xsd=xsd2" />
+    <MetadataFile FileName="WCF_Final2.xsd" MetadataType="Schema" ID="1a4d7a6d-5a16-44db-a69c-200354c83fbe" SourceId="1" SourceUrl="http://c205-06redes/WCFFinal/WCF_Final.Service1.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
